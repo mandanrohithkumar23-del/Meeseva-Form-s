@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caste Certificate Application Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        body {
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            background: #ffffff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 15mm 15mm;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+            position: relative;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #000;
+            margin-bottom: 20px;
+            page-break-after: always;
+        }
+        .header {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 22px;
+        }
+        .header h3 {
+            margin: 2px 0 0 0;
+            font-size: 14px;
+            font-weight: normal;
+        }
+        input[type="text"] {
+            border: none;
+            border-bottom: 1px dotted #000;
+            background: transparent;
+            outline: none;
+            padding: 0 5px;
+            font-size: 13px;
+            color: #00008b;
+        }
+        .salutation {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .statement {
+            text-indent: 30px;
+            text-align: justify;
+            margin: 10px 0;
+        }
+        .field-line {
+            margin-bottom: 6px;
+            text-align: justify;
+        }
+        .declaration-box {
+            margin-top: 15px;
+            text-align: justify;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+        .decl-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .footer-signatures {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+        .page-2-header {
+            text-align: right;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .report-title {
+            text-align: center;
+            font-weight: bold;
+            font-size: 15px;
+            margin: 15px 0 10px 0;
+            text-decoration: underline;
+        }
+        .report-block {
+            margin-bottom: 25px;
+        }
+        .report-sig {
+            text-align: right;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        .bottom-officers {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 60px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .bottom-officers div {
+            width: 30%;
+        }
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .controls {
+                display: none !important;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                height: auto;
+                padding: 10mm 10mm;
+            }
+            input[type="text"] {
+                border-bottom: none !important;
+                color: #000;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <button class="btn" onclick="toggleLanguage()">Switch Language (తెలుగు / English)</button>
+        <button class="btn" onclick="window.print()">Print Form</button>
+    </div>
+
+    <!-- PAGE 1 -->
+    <div class="page">
+        <div class="header">
+            <h1><span class="lang-te">తెలంగాణ ప్రభుత్వం</span><span class="lang-en" style="display:none;">Government of Telangana</span></h1>
+            <h3><span class="lang-te">ఫారం-2 (నియమం)</span><span class="lang-en" style="display:none;">Form-2 (Rule)</span></h3>
+        </div>
+
+        <div class="salutation">
+            <span class="lang-te">తహశీల్దారు / రెవిన్యూ డివిజన్ అధికారి / ఉప కలెక్టరు / సహాయ కలెక్టరు</span>
+            <span class="lang-en" style="display:none;">Tahsildar / Revenue Division Officer / Deputy Collector / Assistant Collector</span><br>
+            <input type="text" style="width: 250px;"> <span class="lang-te">మండలం / డివిజన్</span><span class="lang-en" style="display:none;">Mandal / Division</span> 
+            <input type="text" style="width: 200px;"> <span class="lang-te">జిల్లా</span><span class="lang-en" style="display:none;">District</span>
+        </div>
+
+        <div class="salutation" style="margin-top: 15px;">
+            <span class="lang-te">అయ్యా,</span><span class="lang-en" style="display:none;">Sir,</span>
+        </div>
+
+        <div class="statement">
+            <span class="lang-te">నాకు మరియు నా కుమారుడు / కుమార్తెకు షెడ్యూలు కులము మరియు వెనుకబడిన తరగతుల కులధృవీకరణ పత్రము పొందుటకు ఈ క్రింది వివరాలు సమర్పించుకొనుచున్నాను.</span>
+            <span class="lang-en" style="display:none;">I am submitting the following details to obtain Scheduled Caste / Backward Class Caste Certificate for myself and my son / daughter.</span>
+        </div>
+
+        <div class="field-line">
+            1. <span class="lang-te">ధరఖాస్తుదారుడి పేరు:</span><span class="lang-en" style="display:none;">Applicant Name:</span> 
+            <input type="text" style="width: 400px;"> 
+            2. <span class="lang-te">స్త్రీ / పురుషుడా?</span><span class="lang-en" style="display:none;">Gender (F/M)?</span> 
+            <input type="text" style="width: 80px;">
+        </div>
+
+        <div class="field-line">
+            3. అ) <span class="lang-te">తండ్రి / భర్త పేరు:</span><span class="lang-en" style="display:none;">Father / Husband Name:</span> 
+            <input type="text" style="width: 250px;"> 
+            ఆ) <span class="lang-te">తల్లి పేరు:</span><span class="lang-en" style="display:none;">Mother Name:</span> 
+            <input type="text" style="width: 200px;">
+        </div>
+
+        <div class="field-line">
+            4. <span class="lang-te">చిరునామా: ఇంటి నెం:</span><span class="lang-en" style="display:none;">Address: H.No:</span> 
+            <input type="text" style="width: 120px;">, 
+            <span class="lang-te">వీధి / వార్డ్:</span><span class="lang-en" style="display:none;">Street / Ward:</span> 
+            <input type="text" style="width: 150px;">, 
+            <span class="lang-te">గ్రామము/పట్టణము:</span><span class="lang-en" style="display:none;">Village/Town:</span> 
+            <input type="text" style="width: 150px;">
+        </div>
+
+        <div class="field-line">
+            5. <span class="lang-te">పుట్టిన తేదీ:</span><span class="lang-en" style="display:none;">Date of Birth:</span> 
+            <input type="text" style="width: 200px;"> 
+            6. <span class="lang-te">ఆధార్ కార్డ్ నెం:</span><span class="lang-en" style="display:none;">Aadhaar Card No:</span> 
+            <input type="text" style="width: 200px;">
+        </div>
+
+        <div class="field-line">
+            7. <span class="lang-te">మొబైల్ నెం:</span><span class="lang-en" style="display:none;">Mobile No:</span> 
+            <input type="text" style="width: 200px;"> 
+            8. <span class="lang-te">రేషన్ కార్డ్ నెం:</span><span class="lang-en" style="display:none;">Ration Card No:</span> 
+            <input type="text" style="width: 200px;">
+        </div>
+
+        <div class="field-line">
+            <span class="lang-te">పై ధ్రువపత్రము</span><span class="lang-en" style="display:none;">The above certificate is required for</span> 
+            <input type="text" style="width: 300px;"> 
+            <span class="lang-te">నిమిత్తము కావలెను, కావున ఇప్పించగోరుతున్నాను.</span><span class="lang-en" style="display:none;">purpose, hence requested.</span>
+        </div>
+
+        <div class="field-line">
+            9. <span class="lang-te">ధరఖాస్తు దారుడికి గతంలో జారీ చేయబడిన కుల ధృవీకరణ పత్రము ఏ అధికారి ద్వారా నైన జారీ చేయబడి ఉన్నట్లయితే సదరు కాపీని జతపరచవలెను.</span>
+            <span class="lang-en" style="display:none;">If a caste certificate was previously issued to the applicant by any officer, attach a copy.</span>
+        </div>
+
+        <div class="field-line">
+            10. <span class="lang-te">కుల ధృవీకరణ పత్రము ఏ కులమునకు చెందినదో కావలెను ఉప కులము తో సహా పూర్తి వివరములు తెలియజేయవలెను.</span>
+            <span class="lang-en" style="display:none;">Specify full details including sub-caste for which the caste certificate is required.</span>
+        </div>
+
+        <div class="field-line">
+            11. అ) <span class="lang-te">తండ్రి యొక్క కులము (ఉప కులము తో సహా)</span><span class="lang-en" style="display:none;">Father's Caste (including sub-caste)</span>: 
+            <input type="text" style="width: 300px;"><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ఆ) <span class="lang-te">తల్లి యొక్క కులము (ఉప కులము తో సహా)</span><span class="lang-en" style="display:none;">Mother's Caste (including sub-caste)</span>: 
+            <input type="text" style="width: 300px;">
+        </div>
+
+        <div class="field-line">
+            12. <span class="lang-te">ధరఖాస్తుదారుడు ఏ మతమునకు చెందినవాడు</span><span class="lang-en" style="display:none;">Applicant's Religion</span>: 
+            <input type="text" style="width: 300px;">
+        </div>
+
+        <div class="field-line">
+            13. అ) <span class="lang-te">తండ్రి ఏ మతమునకు చెందినవాడు</span><span class="lang-en" style="display:none;">Father's Religion</span>: 
+            <input type="text" style="width: 300px;"><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ఆ) <span class="lang-te">తల్లి ఏ మతమునకు చెందినవాడు</span><span class="lang-en" style="display:none;">Mother's Religion</span>: 
+            <input type="text" style="width: 300px;">
+        </div>
+
+        <div class="field-line">
+            14. <span class="lang-te">ధరఖాస్తుదారుడు అతడు ఆమె తల్లిదండ్రులకు సహజంగా జన్మించారా? లేక కుమారుడా / కుమార్తె అయ్యి ఉన్నారా?</span>
+            <span class="lang-en" style="display:none;">Is the applicant naturally born to parents or an adopted son/daughter?</span>
+        </div>
+
+        <div class="declaration-box">
+            <div class="decl-title"><span class="lang-te">డిక్లరేషన్</span><span class="lang-en" style="display:none;">Declaration</span></div>
+            <span class="lang-te">ధరఖాస్తులో నేను మరియు మా ద్వారా నిక్షిప్తం చేయబడిన సమాచారము అంతయు నిజము మరియు నిర్ధారితము. కులము ధృవీకరణ పత్రము కొరకు దరఖాస్తుకు జత చేయబడిన ఋజు పత్రములు అన్నియు యదార్థమైనవి, అందలి విషయములు అన్నియు యదార్థములు మరియు వాస్తవములు, పైన చెప్పబడిన వాటిలో ఏవైనా తేలినచో 1993 సంవత్సరము చట్టం 16 లోని నియమము 10 ప్రకారం చట్ట పరమైన శిక్షకు భాద్యుడు అగుదునని తెలియజేసుకొనుచున్నాను.</span>
+            <span class="lang-en" style="display:none;">All information provided in this application by me is true and correct. All proof documents attached for the caste certificate are genuine. If anything stated above is found false, I shall be liable for legal action/punishment as per Rule 10 of Act 16 of 1993.</span>
+        </div>
+
+        <div class="footer-signatures">
+            <div>
+                <span class="lang-te">స్థలం:</span><span class="lang-en" style="display:none;">Place:</span> <input type="text" style="width: 120px;"><br>
+                <span class="lang-te">తేది:</span><span class="lang-en" style="display:none;">Date:</span> <input type="text" style="width: 120px;"><br><br>
+                <span class="lang-te">తల్లి / తండ్రి భర్త / సంరక్షకుడు సంతకం</span>
+                <span class="lang-en" style="display:none;">Mother / Father / Husband / Guardian Signature</span>
+            </div>
+            <div style="text-align: right; margin-top: 25px;">
+                <span class="lang-te">ధరఖాస్తు దారుని సంతకం</span>
+                <span class="lang-en" style="display:none;">Signature of the Applicant</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page">
+        <div class="page-2-header">
+            <u>Caste</u>
+        </div>
+
+        <div class="report-title">
+            <span class="lang-te">గ్రామ రెవెన్యూ అధికారి నివేదిక</span>
+            <span class="lang-en" style="display:none;">Village Revenue Officer Report</span>
+        </div>
+
+        <div class="report-block">
+            <span class="lang-te">శ్రీ/శ్రీమతి/కుమారి/కుమారుడు</span><span class="lang-en" style="display:none;">Sri/Smt/Kumari/Kumar</span> 
+            <input type="text" style="width: 250px;"> 
+            <span class="lang-te">తండ్రి/భర్త</span><span class="lang-en" style="display:none;">Father/Husband</span> 
+            <input type="text" style="width: 200px;"> 
+            <span class="lang-te">గారు రేషన్ కార్డు/ఆధార్ కార్డు/ఓటరు కార్డు ప్రకారం</span><span class="lang-en" style="display:none;">as per Ration Card/Aadhaar/Voter Card belongs to village</span> 
+            <input type="text" style="width: 200px;"> 
+            <span class="lang-te">గ్రామమునకు చెందినవారు.</span><span class="lang-en" style="display:none;">.</span><br>
+            <span class="lang-te">వీరి దరఖాస్తు పై గ్రామములో విచారణ చేయగా మరియు గతంలో జారీ చేసిన కుల ధృవ పత్రము/అఫిడవిట్ ప్రకారం శ్రీ/శ్రీమతి/కుమారి/కుమారుడు</span>
+            <span class="lang-en" style="display:none;">Upon inquiry in the village on their application and as per previously issued caste certificate/affidavit, Sri/Smt/Kumari/Kumar</span> 
+            <input type="text" style="width: 220px;"> 
+            <span class="lang-te">తండ్రి</span><span class="lang-en" style="display:none;">Father</span> 
+            <input type="text" style="width: 200px;"> 
+            <span class="lang-te">గారు</span><span class="lang-en" style="display:none;"> belongs to</span> 
+            <input type="text" style="width: 200px;"> 
+            <span class="lang-te">కులం</span><span class="lang-en" style="display:none;"> caste</span> 
+            <input type="text" style="width: 180px;"> 
+            <span class="lang-te">గ్రూప్ కు చెందినవారుగా ధృవీకరించనైనది.</span><span class="lang-en" style="display:none;"> group, hereby certified.</span>
+        </div>
+
+        <div class="report-sig">
+            <span class="lang-te">గ్రామ రెవెన్యూ అధికారి</span><span class="lang-en" style="display:none;">Village Revenue Officer</span><br>
+            <span class="lang-te">గ్రామము</span><span class="lang-en" style="display:none;">Village</span>: <input type="text" style="width: 180px;">
+        </div>
+
+        <div class="report-title" style="margin-top: 30px;">
+            <span class="lang-te">మండల రెవెన్యూ ఇన్ స్పెక్టర్ నివేదిక</span>
+            <span class="lang-en" style="display:none;">Mandal Revenue Inspector Report</span>
+        </div>
+
+        <div class="report-block">
+            <span class="lang-te">గ్రామములో విచారణ మరియు దరఖాస్తుదారు సమర్పించిన ధృవపత్రముల ఆధారంగా శ్రీ/శ్రీమతి/కుమారి/కుమారుడు</span>
+            <span class="lang-en" style="display:none;">Based on inquiry in the village and documents submitted by the applicant Sri/Smt/Kumari/Kumar</span> 
+            <input type="text" style="width: 220px;"> 
+            <span class="lang-te">తండ్రి / భర్త</span><span class="lang-en" style="display:none;">Father / Husband</span> 
+            <input type="text" style="width: 200px;"> 
+            <span class="lang-te">గారు</span><span class="lang-en" style="display:none;"> belongs to</span> 
+            <input type="text" style="width: 200px;"> 
+            <span class="lang-te">కులం</span><span class="lang-en" style="display:none;"> caste</span> 
+            <input type="text" style="width: 180px;"> 
+            <span class="lang-te">గ్రూప్ కు చెందినవారుగా ధృవీకరించనైనది.</span><span class="lang-en" style="display:none;"> group, hereby certified.</span>
+        </div>
+
+        <div class="report-sig">
+            <span class="lang-te">మండల రెవెన్యూ ఇన్ స్పెక్టర్</span><span class="lang-en" style="display:none;">Mandal Revenue Inspector</span><br>
+            <span class="lang-te">సూర్యాపేట మండలం</span><span class="lang-en" style="display:none;">Suryapet Mandal</span>
+        </div>
+
+        <div class="report-title" style="text-align: left; text-decoration: none; margin-top: 25px;">
+            <span class="lang-te">సమర్పణ:</span><span class="lang-en" style="display:none;">Submission:</span>
+        </div>
+
+        <div class="report-block">
+            <span class="lang-te">గ్రామ రెవెన్యూ అధికారి మరియు మండల రెవెన్యూ ఇన్ స్పెక్టర్ గార్ల విచారణ నివేదిక మరియు దరఖాస్తుదారు సమర్పించిన ధృవ పత్రములు పరిశీలించగా సర్టిఫికేట్ పొందే వ్యక్తి</span>
+            <span class="lang-en" style="display:none;">Upon examining the inquiry reports of VRO & MRI and certificates submitted by applicant, the person receiving certificate</span> 
+            <input type="text" style="width: 220px;"> 
+            <span class="lang-te">కులం</span><span class="lang-en" style="display:none;"> caste</span> 
+            <input type="text" style="width: 200px;"> 
+            <span class="lang-te">గ్రూప్ నకు చెందినవారుగా తెలియుచున్నది.</span><span class="lang-en" style="display:none;"> group is verified.</span><br>
+            <span class="lang-te">కావున కుల ధృవ పత్రము జారీకి తమరి పరిశీలనకు, ఆమోదమునకు మరియు ఇట్టి ఫైలును డి.డిస్ నందు ముగించుటకు తమరీ అనుమతికై సమర్పించనైనది.</span>
+            <span class="lang-en" style="display:none;">Hence, submitted for your verification, approval for issuing Caste Certificate and permission to dispose of file in D.Dis.</span>
+        </div>
+
+        <div class="bottom-officers">
+            <div>
+                <span class="lang-te">సెక్షన్ అసిస్టెంట్</span><span class="lang-en" style="display:none;">Section Assistant</span>
+            </div>
+            <div>
+                <span class="lang-te">ఉప తహశీల్దార్</span><span class="lang-en" style="display:none;">Deputy Tahsildar</span>
+            </div>
+            <div>
+                <span class="lang-te">తహశీల్దార్</span><span class="lang-en" style="display:none;">Tahsildar</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'te';
+        function toggleLanguage() {
+            const teElements = document.querySelectorAll('.lang-te');
+            const enElements = document.querySelectorAll('.lang-en');
+
+            if (currentLang === 'te') {
+                teElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => el.style.display = 'inline');
+                currentLang = 'en';
+            } else {
+                teElements.forEach(el => el.style.display = 'inline');
+                enElements.forEach(el => el.style.display = 'none');
+                currentLang = 'te';
+            }
+        }
+    </script>
+</body>
+</html>

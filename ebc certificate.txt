@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APPLICATION FOR E.B.C. CERTIFICATE</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 15mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background-color: #e5e5e5;
+      margin: 0;
+      padding: 20px 0;
+      color: #000;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: #fff;
+      padding: 16mm 20mm;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      position: relative;
+    }
+
+    .top-header {
+      display: flex;
+      justify-content: flex-end;
+      text-align: right;
+      line-height: 1.2;
+      font-size: 15px;
+    }
+
+    .meeseva-text {
+      font-family: Arial, sans-serif;
+      font-weight: normal;
+      margin-right: 15px;
+    }
+
+    .main-title {
+      text-align: center;
+      margin-top: 5px;
+      margin-bottom: 25px;
+    }
+
+    .main-title h1 {
+      font-size: 17px;
+      font-weight: bold;
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+
+    .main-title .sub-title {
+      font-size: 13px;
+      margin-top: 3px;
+    }
+
+    .recipient {
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+
+    .input-line {
+      border: none;
+      border-bottom: 1px dotted #000;
+      background: transparent;
+      outline: none;
+      font-family: inherit;
+      font-size: 14px;
+      color: #000;
+      padding: 0 4px;
+    }
+
+    .input-line:focus {
+      background-color: #f0f7ff;
+      border-bottom: 1px solid #000;
+    }
+
+    .letter-body {
+      font-size: 14px;
+      line-height: 2.1;
+      text-align: justify;
+      margin-bottom: 25px;
+    }
+
+    .section-header {
+      font-size: 15px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .details-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 30px;
+    }
+
+    .details-table td {
+      padding: 3px 0;
+      font-size: 14px;
+      vertical-align: middle;
+    }
+
+    .details-table td.field-name {
+      width: 170px;
+      white-space: nowrap;
+    }
+
+    .details-table td.separator {
+      width: 25px;
+      text-align: left;
+    }
+
+    .details-table td.field-input {
+      width: auto;
+    }
+
+    .table-input {
+      width: 85%;
+      border: none;
+      border-bottom: 1px dotted #000;
+      background: transparent;
+      outline: none;
+      font-family: inherit;
+      font-size: 14px;
+      padding: 2px 4px;
+    }
+
+    .table-input:focus {
+      background-color: #f0f7ff;
+      border-bottom: 1px solid #000;
+    }
+
+    .signature-section {
+      text-align: right;
+      margin-top: 20px;
+      margin-bottom: 30px;
+      padding-right: 25px;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .note-section {
+      font-size: 12px;
+      line-height: 1.45;
+      text-align: justify;
+      margin-bottom: 16px;
+    }
+
+    .procedure-section {
+      font-size: 12.5px;
+      line-height: 1.45;
+    }
+
+    .toolbar {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+      background: rgba(255,255,255,0.9);
+      padding: 10px 14px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      z-index: 1000;
+    }
+
+    .btn {
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: bold;
+      border: 1px solid #333;
+      border-radius: 4px;
+      cursor: pointer;
+      background: #fff;
+    }
+
+    .btn-primary {
+      background: #000;
+      color: #fff;
+      border-color: #000;
+    }
+
+    @media print {
+      body {
+        background: transparent;
+        padding: 0;
+      }
+      .page {
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        min-height: auto;
+      }
+      .toolbar {
+        display: none;
+      }
+      .input-line, .table-input {
+        border-bottom: 1px dotted #000 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="toolbar">
+    <button class="btn" type="button" onclick="clearForm()">Clear All</button>
+    <button class="btn btn-primary" type="button" onclick="window.print()">Print / Save PDF</button>
+  </div>
+
+  <div class="page">
+    <div class="top-header">
+      <div>
+        To<br>
+        <span class="meeseva-text">mee seva</span>[span_0](start_span)[span_0](end_span)
+      </div>
+    </div>
+
+    <div class="main-title">
+      <h1>APPLICATION FOR E.B.C. CERTIFICATE</h1>
+      <div class="sub-title">{In terms of G.O.Ms.No.231, dated.25.09.2008}</div>
+    </div>
+
+    <div class="recipient">
+      To<br>
+      The Tahsildar,<br>
+      <input type="text" class="input-line" style="width: 180px;"> (M)[span_1](start_span)[span_1](end_span)
+    </div>
+
+    <div class="letter-body">
+      Respected Sir,<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I <input type="text" class="input-line" style="width: 250px;"> S/O,D/o,W/o <input type="text" class="input-line" style="width: 220px;"> R/o <input type="text" class="input-line" style="width: 200px;"> belongs to ECONOMICALLY BACKWARD CLASS (E.B.C.) SUB-CASTE (O.C.) <input type="text" class="input-line" style="width: 130px;">. So, I am in need of E.B.C. Certificate to apply Scholarship you to issue E.B.C. Certificate for me as possible.[span_2](start_span)[span_2](end_span) My father's income is Rs. <input type="text" class="input-line" style="width: 120px;"> (Rupees <input type="text" class="input-line" style="width: 320px;"> only).[span_3](start_span)[span_3](end_span)
+    </div>
+
+    <div class="section-header">Applicant Details</div>
+
+    <table class="details-table">
+      <tr>
+        <td class="field-name">Gender</td>
+        <td class="separator">:</td>
+        <td class="field-input"><input type="text" class="table-input"></td>
+      </tr>
+      <tr>
+        <td class="field-name">DOB</td>
+        <td class="separator">:</td>
+        <td class="field-input"><input type="text" class="table-input"></td>
+      </tr>
+      <tr>
+        <td class="field-name">Door No</td>
+        <td class="separator">:</td>
+        <td class="field-input"><input type="text" class="table-input"></td>
+      </tr>
+      <tr>
+        <td class="field-name">Locality/Landmark</td>
+        <td class="separator">:</td>
+        <td class="field-input"><input type="text" class="table-input"></td>
+      </tr>
+      <tr>
+        <td class="field-name">Village</td>
+        <td class="separator">:</td>
+        <td class="field-input"><input type="text" class="table-input"></td>
+      </tr>
+      <tr>
+        <td class="field-name">District</td>
+        <td class="separator">:</td>
+        <td class="field-input"><input type="text" class="table-input"></td>
+      </tr>
+      <tr>
+        <td class="field-name">Pin code</td>
+        <td class="separator">:</td>
+        <td class="field-input"><input type="text" class="table-input"></td>
+      </tr>
+      <tr>
+        <td class="field-name">Mobile Number</td>
+        <td class="separator">:</td>
+        <td class="field-input"><input type="text" class="table-input"></td>
+      </tr>
+      <tr>
+        <td class="field-name">Phone Number</td>
+        <td class="separator">:</td>
+        <td class="field-input"><input type="text" class="table-input"></td>
+      </tr>
+      <tr>
+        <td class="field-name">Email</td>
+        <td class="separator">:</td>
+        <td class="field-input"><input type="text" class="table-input"></td>
+      </tr>
+      <tr>
+        <td class="field-name">Adhaar Number</td>
+        <td class="separator">:</td>
+        <td class="field-input"><input type="text" class="table-input"></td>
+      </tr>
+      <tr>
+        <td class="field-name">Ration Card</td>
+        <td class="separator">:</td>
+        <td class="field-input"><input type="text" class="table-input"></td>
+      </tr>
+    </table>
+
+    <div class="signature-section">
+      Yours faithfully,<br><br><br>
+      (Signature of candidate)[span_4](start_span)[span_4](end_span)
+    </div>
+
+    <div class="note-section">
+      <strong>Note:</strong> As per G.O.Ms.No. 231, dated.25.09.2008 the EBC is issued to the following caste: (1. Ayyaraka 2. Kasi Kapidi 3. Padra 4. Gajula Balija 5. Nagarulu 6. Pondara 7. Kurakula 8. Qureshi (Muslim Butchers) 9. Palaekaria 10. Kapu 11. Balija 12. Telaga 13. Ontaries), and since the "Government have decided to broad base the ambit of the Scheme of Post-Matric Scholarships so as to consider eligible Economically Backward Class (EBC) students from all communities (except those belonging to S.C./S.T./B.C/ Minority for whom separate Scholarship Schemes are in operation) studying in Polytechnics, Professional Colleges (other than Medical) and University Colleges., " fall under these category are also issued.[span_5](start_span)[span_5](end_span)
+    </div>
+
+    <div class="procedure-section">
+      <strong>Procedure (following to be enclosed):</strong><br>
+      1) Application Form*<br>
+      2) Ration Card/ Aadhaar Card / EPIC Card#<br>
+      *-mandatory #-any one of them[span_6](start_span)[span_6](end_span)
+    </div>
+  </div>
+
+  <script>
+    function clearForm() {
+      if (confirm('Are you sure you want to clear all fields?')) {
+        document.querySelectorAll('input').forEach(input => input.value = '');
+      }
+    }
+  </script>
+</body>
+</html>

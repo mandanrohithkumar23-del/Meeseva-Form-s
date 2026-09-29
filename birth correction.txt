@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDMA Birth Corrections Application Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            background: #ffffff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 12mm 15mm;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+            position: relative;
+            font-size: 11px;
+            line-height: 1.4;
+            color: #000;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .meeseva-logo {
+            width: 110px;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .meeseva-logo img {
+            width: 100%;
+            height: auto;
+        }
+        .price-tag {
+            text-align: right;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .form-title {
+            text-align: center;
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-decoration: underline;
+        }
+        .section-header {
+            font-weight: bold;
+            font-size: 12px;
+            margin-top: 8px;
+            margin-bottom: 4px;
+            text-decoration: underline;
+        }
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 4px;
+            gap: 8px;
+        }
+        .line-field {
+            display: flex;
+            align-items: baseline;
+            width: 100%;
+            margin-bottom: 3px;
+        }
+        .line-field label {
+            white-space: nowrap;
+            font-weight: bold;
+            font-size: 11px;
+        }
+        .line-field input[type="text"] {
+            flex-grow: 1;
+            border: none;
+            border-bottom: 1px solid #000;
+            outline: none;
+            padding: 0 5px;
+            font-size: 11px;
+            background: transparent;
+        }
+        .checkbox-group {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: 5px;
+        }
+        .checkbox-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            cursor: pointer;
+        }
+        .checkbox-item input[type="checkbox"] {
+            margin: 0;
+            width: 12px;
+            height: 12px;
+        }
+        .doc-list {
+            margin-top: 5px;
+            padding-left: 20px;
+        }
+        .doc-list li {
+            margin-bottom: 3px;
+            font-size: 10.5px;
+        }
+        .footer-sig {
+            text-align: right;
+            font-weight: bold;
+            margin-top: -15px;
+            margin-bottom: 15px;
+            font-size: 11px;
+        }
+        .note {
+            color: #d93025;
+            font-weight: bold;
+            font-size: 10px;
+            margin-top: 10px;
+        }
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .controls {
+                display: none !important;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                height: auto;
+                padding: 8mm 10mm;
+            }
+            input[type="text"] {
+                border-bottom: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <button class="btn" onclick="window.print()">Print Form</button>
+    </div>
+
+    <div class="page">
+        <!-- Header -->
+        <div class="header">
+            <div style="width: 60px;"></div>
+            <div class="meeseva-logo">
+                <svg width="100" height="40" viewBox="0 0 200 80">
+                    <ellipse cx="100" cy="40" rx="70" ry="30" fill="none" stroke="#f37021" stroke-width="4"/>
+                    <text x="100" y="45" font-family="Arial" font-size="22" font-weight="bold" fill="#008837" text-anchor="middle">మీసేవ</text>
+                    <text x="100" y="60" font-family="Arial" font-size="8" fill="#f37021" text-anchor="middle">అందిచేను సేవలు</text>
+                </svg>
+            </div>
+            <div class="price-tag">Price: ` 1</div>
+        </div>
+
+        <div class="form-title">CDMA Birth Corrections Application Form</div>
+
+        <!-- Birth Details -->
+        <div class="section-header">Birth Details:-</div>
+        
+        <div class="row">
+            <div class="line-field" style="width: 48%;">
+                <label>District:</label>
+                <input type="text">
+            </div>
+            <div class="line-field" style="width: 50%;">
+                <label>Registration Unit Id:</label>
+                <input type="text">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="line-field" style="width: 32%;">
+                <label>Registration Number:</label>
+                <input type="text">
+            </div>
+            <div class="line-field" style="width: 32%;">
+                <label>Registration Year:</label>
+                <input type="text">
+            </div>
+            <div class="line-field" style="width: 32%;">
+                <label>Birth Year:</label>
+                <input type="text">
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 2px;">
+            <label style="font-weight: bold;">Location:</label>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox"> Greater Municipality</label>
+                <label class="checkbox-item"><input type="checkbox"> Municipality</label>
+                <label class="checkbox-item"><input type="checkbox"> Municipal Corporation</label>
+                <label class="checkbox-item"><input type="checkbox"> Gram Panchayat</label>
+            </div>
+        </div>
+
+        <div class="row" style="margin-top: 2px;">
+            <label style="font-weight: bold;">Gender:</label>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox"> Male</label>
+                <label class="checkbox-item"><input type="checkbox"> Female</label>
+            </div>
+        </div>
+
+        <!-- Corrections Required -->
+        <div class="section-header">Corrections Required in Birth Certificate Details:-</div>
+
+        <div class="row">
+            <label style="font-weight: bold;">Whether You Want to Update Child Name:</label>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox"> Yes</label>
+                <label class="checkbox-item"><input type="checkbox"> No</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="line-field" style="width: 42%;">
+                <label>Changed Child Surname:</label>
+                <input type="text">
+            </div>
+            <div class="line-field" style="width: 56%;">
+                <label>Changed Child Name:</label>
+                <input type="text">
+            </div>
+        </div>
+
+        <div class="row">
+            <label style="font-weight: bold;">Whether You Want to Update Date of Birth:</label>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox"> Yes</label>
+                <label class="checkbox-item"><input type="checkbox"> No</label>
+            </div>
+        </div>
+
+        <div class="line-field" style="width: 50%;">
+            <label>Changed Date of Birth:</label>
+            <input type="text">
+        </div>
+
+        <div class="row">
+            <label style="font-weight: bold;">Whether You Want to Update Gender:</label>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox"> Yes</label>
+                <label class="checkbox-item"><input type="checkbox"> No</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <label style="font-weight: bold;">Changed Gender:</label>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox"> Male</label>
+                <label class="checkbox-item"><input type="checkbox"> Female</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <label style="font-weight: bold;">Whether You Want to Update Father Name:</label>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox"> Yes</label>
+                <label class="checkbox-item"><input type="checkbox"> No</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="line-field" style="width: 42%;">
+                <label>Changed Father Surname:</label>
+                <input type="text">
+            </div>
+            <div class="line-field" style="width: 56%;">
+                <label>Changed Father Name:</label>
+                <input type="text">
+            </div>
+        </div>
+
+        <div class="row">
+            <label style="font-weight: bold;">Whether You Want to Update Mother Name:</label>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox"> Yes</label>
+                <label class="checkbox-item"><input type="checkbox"> No</label>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="line-field" style="width: 42%;">
+                <label>Changed Mother Surname:</label>
+                <input type="text">
+            </div>
+            <div class="line-field" style="width: 56%;">
+                <label>Changed Mother Name:</label>
+                <input type="text">
+            </div>
+        </div>
+
+        <div class="row">
+            <label style="font-weight: bold;">Whether You Want to Update Birth Place:</label>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox"> Yes</label>
+                <label class="checkbox-item"><input type="checkbox"> No</label>
+            </div>
+        </div>
+
+        <div class="line-field" style="width: 50%;">
+            <label>Changed Birth Place:</label>
+            <input type="text">
+        </div>
+
+        <div class="row">
+            <label style="font-weight: bold;">Whether You Want to Update Address at the Time of Birth:</label>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox"> Yes</label>
+                <label class="checkbox-item"><input type="checkbox"> No</label>
+            </div>
+        </div>
+
+        <div class="line-field"><label>Changed Line 1 of Address at the Time of Birth:</label><input type="text"></div>
+        <div class="line-field"><label>Changed Line 2 of Address at the Time of Birth:</label><input type="text"></div>
+        <div class="line-field"><label>Changed Line 3 of Address at the Time of Birth:</label><input type="text"></div>
+
+        <div class="row">
+            <label style="font-weight: bold;">Whether You Want to Update Permanent Address:</label>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox"> Yes</label>
+                <label class="checkbox-item"><input type="checkbox"> No</label>
+            </div>
+        </div>
+
+        <div class="line-field"><label>Changed Line 1 of Permanent Address:</label><input type="text"></div>
+        <div class="line-field"><label>Changed Line 2 of Permanent Address:</label><input type="text"></div>
+        <div class="line-field"><label>Changed Line 3 of Permanent Address:</label><input type="text"></div>
+
+        <!-- Informant Details -->
+        <div class="section-header">Informant Details:-</div>
+
+        <div class="line-field"><label>Informant Name:</label><input type="text"></div>
+
+        <div class="row">
+            <label style="font-weight: bold;">Informant Relation:</label>
+            <div class="checkbox-group">
+                <label class="checkbox-item"><input type="checkbox"> S/o</label>
+                <label class="checkbox-item"><input type="checkbox"> D/o</label>
+                <label class="checkbox-item"><input type="checkbox"> W/o</label>
+                <label class="checkbox-item"><input type="checkbox"> H/o</label>
+                <label class="checkbox-item"><input type="checkbox"> M/o</label>
+                <label class="checkbox-item"><input type="checkbox"> F/o</label>
+                <label class="checkbox-item"><input type="checkbox"> C/o</label>
+            </div>
+        </div>
+
+        <div class="line-field"><label>Informant Address1:</label><input type="text"></div>
+        <div class="line-field"><label>Informant Address2:</label><input type="text"></div>
+        <div class="line-field"><label>Informant Address3:</label><input type="text"></div>
+
+        <div class="row">
+            <div class="line-field" style="width: 48%;">
+                <label>Mobile Number:</label>
+                <input type="text">
+            </div>
+            <div class="line-field" style="width: 50%;">
+                <label>Email ID:</label>
+                <input type="text">
+            </div>
+        </div>
+
+        <div class="line-field"><label>Remarks:</label><input type="text"></div>
+
+        <div class="row">
+            <div class="line-field" style="width: 38%;">
+                <label>Pin code:</label>
+                <input type="text">
+            </div>
+            <div style="display: flex; align-items: center; gap: 5px;">
+                <label style="font-weight: bold;">Delivery Type:</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-item"><input type="checkbox"> Manual / In Person</label>
+                    <label class="checkbox-item"><input type="checkbox"> Post – Local</label>
+                    <label class="checkbox-item"><input type="checkbox"> Post - Nonlocal</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="line-field"><label>Purpose of the Certificate:</label><input type="text"></div>
+        <div class="line-field" style="width: 35%;"><label>No of copies:</label><input type="text"></div>
+
+        <!-- Document List -->
+        <div class="section-header" style="margin-top: 10px;">Document List:-</div>
+
+        <ol class="doc-list">
+            <li><strong>Application Form<span style="color: red;">*</span></strong></li>
+            <li>Original Birth Certificate issued by the Registrar of Birth</li>
+            <li>Declaration by Parent(s) attested by two gazetted officers</li>
+            <li>Notary Affidavit on Rs.10/- Non-Judicial Stamped paper</li>
+            <li>Available Documentary evidences like educational certificates, Election ID Card, Ration Card, Passport, Driving License and Marriage certificates</li>
+            <li>A letter from the Hospital Authorities where the Birth has occurred</li>
+        </ol>
+
+        <div class="footer-sig">Applicant's Signature</div>
+
+        <div class="note">
+            Note: Please upload Application Form and any one of Above Documents as a single file in pdf format
+        </div>
+    </div>
+
+</body>
+</html>

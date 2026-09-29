@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Application for Gap Certificate - MeeSeva</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 20px;
+      color: #000;
+    }
+    .form-page {
+      background: #fff;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px 40px;
+      border: 2px solid #000;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .header h2 {
+      margin: 0 0 4px 0;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+    }
+    .header h3 {
+      margin: 0 0 4px 0;
+      font-size: 16px;
+    }
+    .header h1 {
+      margin: 8px 0 4px 0;
+      font-size: 19px;
+      text-decoration: underline;
+    }
+    .header p {
+      margin: 0;
+      font-size: 13px;
+      font-weight: bold;
+    }
+    .section-title {
+      font-weight: bold;
+      font-size: 15px;
+      margin: 18px 0 8px 0;
+      text-decoration: underline;
+    }
+    .form-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 12px;
+    }
+    .form-table td {
+      padding: 6px 4px;
+      vertical-align: middle;
+      font-size: 14px;
+    }
+    .form-table td.label-col {
+      width: 45%;
+      font-weight: 500;
+    }
+    .form-table td.colon-col {
+      width: 3%;
+      text-align: center;
+    }
+    .form-table td.input-col {
+      width: 52%;
+    }
+    .input-line {
+      width: 100%;
+      border: none;
+      border-bottom: 1px solid #000;
+      background: transparent;
+      padding: 2px 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+      outline: none;
+    }
+    .input-line:focus {
+      border-bottom: 1.5px solid #0056b3;
+    }
+    .radio-inline {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 15px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .radio-inline input {
+      margin-right: 4px;
+    }
+    .doc-note {
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+    .doc-list {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .doc-list td {
+      padding: 6px 4px;
+      font-size: 14px;
+    }
+    .doc-list td.doc-num {
+      width: 4%;
+      vertical-align: top;
+    }
+    .doc-list td.doc-label {
+      width: 56%;
+      vertical-align: middle;
+    }
+    .doc-list td.doc-input {
+      width: 40%;
+      vertical-align: middle;
+    }
+    .footer-section {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+    .footer-left {
+      width: 55%;
+    }
+    .footer-right {
+      width: 40%;
+      text-align: right;
+    }
+    .signature-area {
+      margin-top: 50px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    .btn-wrap {
+      text-align: center;
+      margin-top: 25px;
+    }
+    .print-btn {
+      background-color: #003366;
+      color: #fff;
+      padding: 10px 24px;
+      font-size: 14px;
+      font-weight: bold;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    @media print {
+      body {
+        padding: 0;
+        background: none;
+      }
+      .form-page {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+      }
+      .btn-wrap {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="form-page">
+  <div class="header">
+    <h2>GOVERNMENT OF TELANGANA</h2>
+    <h3>MEE SEVA</h3>
+    <h1>APPLICATION FOR GAP CERTIFICATE</h1>
+    <p>(Write in Capital Letters)</p>
+  </div>
+
+  <form action="#" method="post" enctype="multipart/form-data">
+    <!-- Applicant Details -->
+    <div class="section-title">Applicant Details</div>
+    <table class="form-table">
+      <tr>
+        <td class="label-col">1. Applicant Name</td>
+        <td class="colon-col">:</td>
+        <td class="input-col"><input type="text" class="input-line" style="text-transform: uppercase;" required></td>
+      </tr>
+      <tr>
+        <td class="label-col">2. Father/Husband/Mother / Guardian Name</td>
+        <td class="colon-col">:</td>
+        <td class="input-col"><input type="text" class="input-line" style="text-transform: uppercase;" required></td>
+      </tr>
+      <tr>
+        <td class="label-col">3. Gender</td>
+        <td class="colon-col">:</td>
+        <td class="input-col">
+          <label class="radio-inline"><input type="radio" name="gender" value="Male" required> Male</label>
+          <label class="radio-inline"><input type="radio" name="gender" value="Female"> Female</label>
+          <label class="radio-inline"><input type="radio" name="gender" value="Transgender"> Transgender</label>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Permanent Address -->
+    <div class="section-title">Permanent Address</div>
+    <table class="form-table">
+      <tr>
+        <td class="label-col">1. Door No</td>
+        <td class="colon-col">:</td>
+        <td class="input-col"><input type="text" class="input-line" required></td>
+      </tr>
+      <tr>
+        <td class="label-col">2. District</td>
+        <td class="colon-col">:</td>
+        <td class="input-col"><input type="text" class="input-line" required></td>
+      </tr>
+      <tr>
+        <td class="label-col">3. Mandal</td>
+        <td class="colon-col">:</td>
+        <td class="input-col"><input type="text" class="input-line" required></td>
+      </tr>
+      <tr>
+        <td class="label-col">4. Village/Ward</td>
+        <td class="colon-col">:</td>
+        <td class="input-col"><input type="text" class="input-line" required></td>
+      </tr>
+      <tr>
+        <td class="label-col">5. PinCode</td>
+        <td class="colon-col">:</td>
+        <td class="input-col"><input type="text" class="input-line" pattern="[0-9]{6}" maxlength="6" required></td>
+      </tr>
+      <tr>
+        <td class="label-col">6. Mobile Number</td>
+        <td class="colon-col">:</td>
+        <td class="input-col"><input type="tel" class="input-line" pattern="[0-9]{10}" maxlength="10" required></td>
+      </tr>
+      <tr>
+        <td class="label-col">7. Delivery Type (Manual/Postal)</td>
+        <td class="colon-col">:</td>
+        <td class="input-col">
+          <label class="radio-inline"><input type="radio" name="deliveryType" value="Manual" required> Manual</label>
+          <label class="radio-inline"><input type="radio" name="deliveryType" value="Postal"> Postal</label>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Gap Certificate Details -->
+    <div class="section-title">Gap Certificate Details</div>
+    <table class="form-table">
+      <tr>
+        <td class="label-col">Purpose</td>
+        <td class="colon-col">:</td>
+        <td class="input-col">
+          <label class="radio-inline"><input type="radio" name="purpose" value="General" required> General</label>
+          <label class="radio-inline"><input type="radio" name="purpose" value="Central services"> Central services</label><br>
+          <label class="radio-inline" style="margin-top: 4px;"><input type="radio" name="purpose" value="State Employment"> For Employment to State Government Services</label>
+        </td>
+      </tr>
+      <tr>
+        <td class="label-col">1. District</td>
+        <td class="colon-col">:</td>
+        <td class="input-col"><input type="text" class="input-line" required></td>
+      </tr>
+      <tr>
+        <td class="label-col">2. Mandal</td>
+        <td class="colon-col">:</td>
+        <td class="input-col"><input type="text" class="input-line" required></td>
+      </tr>
+      <tr>
+        <td class="label-col">3. Village</td>
+        <td class="colon-col">:</td>
+        <td class="input-col"><input type="text" class="input-line" required></td>
+      </tr>
+      <tr>
+        <td class="label-col">4. GAP Period</td>
+        <td class="colon-col">:</td>
+        <td class="input-col"><input type="text" class="input-line" placeholder="From (Year) - To (Year)" required></td>
+      </tr>
+    </table>
+
+    <!-- Document List -->
+    <div class="section-title">Document List</div>
+    <div class="doc-note">(All Uploaded Document should be in PDF format only and accept up to 3 MB)</div>
+    
+    <table class="doc-list">
+      <tr>
+        <td class="doc-num">1.</td>
+        <td class="doc-label">Application Form*:</td>
+        <td class="doc-input"><input type="file" accept=".pdf" required></td>
+      </tr>
+      <tr>
+        <td class="doc-num">2.</td>
+        <td class="doc-label">Aadhaar Card*:</td>
+        <td class="doc-input"><input type="file" accept=".pdf" required></td>
+      </tr>
+      <tr>
+        <td class="doc-num">3.</td>
+        <td class="doc-label">Previous Study Certificate / School Bonafide &amp; Memo*:</td>
+        <td class="doc-input"><input type="file" accept=".pdf" required></td>
+      </tr>
+      <tr>
+        <td class="doc-num">4.</td>
+        <td class="doc-label">Allotment Letter &amp; Joining Letter (Present)*:</td>
+        <td class="doc-input"><input type="file" accept=".pdf" required></td>
+      </tr>
+      <tr>
+        <td class="doc-num">5.</td>
+        <td class="doc-label">Police Verification*:</td>
+        <td class="doc-input"><input type="file" accept=".pdf" required></td>
+      </tr>
+      <tr>
+        <td class="doc-num">6.</td>
+        <td class="doc-label">Self Affidavit*:</td>
+        <td class="doc-input"><input type="file" accept=".pdf" required></td>
+      </tr>
+    </table>
+
+    <!-- Signature / Contact Section -->
+    <div class="footer-section">
+      <div class="footer-left">
+        <label for="contactInfo" style="font-size: 14px; font-weight: bold; display: block; margin-bottom: 4px;">Name &amp; address, Telephone No:</label>
+        <textarea id="contactInfo" rows="4" class="input-line" style="border: 1px solid #000; resize: vertical;"></textarea>
+      </div>
+      <div class="footer-right">
+        <div class="signature-area">
+          (Signature of the Applicant)
+        </div>
+      </div>
+    </div>
+
+    <div class="btn-wrap">
+      <button type="button" class="print-btn" onclick="window.print()">Print / Save PDF</button>
+      <button type="submit" class="print-btn" style="background-color: #2e7d32; margin-left: 10px;">Submit Application</button>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

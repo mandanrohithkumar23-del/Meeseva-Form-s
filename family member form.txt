@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Member Certificate Documents - Full Set</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        body {
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            background: #ffffff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 12mm 15mm;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+            position: relative;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #000;
+            margin-bottom: 30px;
+            page-break-after: always;
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .meeseva-logo {
+            width: 100px;
+            margin: 0 auto 5px auto;
+        }
+        .govt-logo {
+            width: 70px;
+            margin: 0 auto 5px auto;
+        }
+        .header h2 {
+            margin: 0;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+        .header h3 {
+            margin: 2px 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .header h4 {
+            margin: 3px 0;
+            font-size: 11px;
+            font-weight: normal;
+        }
+        .header p {
+            margin: 2px 0 15px 0;
+            font-size: 11px;
+            text-decoration: underline;
+        }
+
+        /* Form Controls */
+        input[type="text"] {
+            border: none;
+            border-bottom: 1px dotted #000;
+            background: transparent;
+            outline: none;
+            padding: 0 5px;
+            font-size: 13px;
+            color: #00008b;
+        }
+
+        /* Content Sections */
+        .salutation {
+            margin-bottom: 10px;
+        }
+        .content-line {
+            margin-bottom: 8px;
+            text-align: justify;
+        }
+
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        .data-table th, .data-table td {
+            border: 1px solid #000;
+            padding: 6px;
+            text-align: center;
+        }
+        .data-table th {
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .data-table td input {
+            width: 95%;
+            border: none;
+            text-align: center;
+        }
+
+        /* Form Grids */
+        .applicant-details {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        .grid-3col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-top: 5px;
+        }
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        /* Signatures & Footer */
+        .signature-block {
+            text-align: right;
+            margin-top: 25px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .footer-section {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+        }
+        .doc-list {
+            font-size: 12px;
+        }
+        .doc-list ol {
+            padding-left: 20px;
+            margin: 5px 0;
+        }
+        .doc-list li {
+            margin-bottom: 4px;
+        }
+        .required-star {
+            color: red;
+            font-weight: bold;
+        }
+        .note-text {
+            color: orange;
+            font-size: 11px;
+            margin-top: 10px;
+        }
+        .contact-fields {
+            font-size: 12px;
+        }
+        .contact-fields div {
+            margin-bottom: 6px;
+        }
+
+        .top-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .controls {
+                display: none !important;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                height: 100vh;
+                padding: 10mm 10mm;
+                page-break-after: always;
+            }
+            input[type="text"] {
+                border-bottom: none !important;
+                color: #000;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <button class="btn" onclick="toggleLanguage()">Switch Language (తెలుగు / English)</button>
+        <button class="btn" onclick="window.print()">Print All Forms</button>
+    </div>
+
+    <!-- PAGE 1: APPLICATION FORM -->
+    <div class="page">
+        <div class="header">
+            <div class="meeseva-logo">
+                <svg width="90" height="35" viewBox="0 0 200 80">
+                    <ellipse cx="100" cy="40" rx="70" ry="30" fill="none" stroke="#f37021" stroke-width="4"/>
+                    <text x="100" y="45" font-family="Arial" font-size="22" font-weight="bold" fill="#008837" text-anchor="middle">మీసేవ</text>
+                    <text x="100" y="60" font-family="Arial" font-size="8" fill="#f37021" text-anchor="middle">అందిచేను సేవలు</text>
+                </svg>
+            </div>
+            <h2><span class="lang-te">కుటుంబసభ్యుల ధృవీకరణ పత్రముకై దరఖాస్తు</span><span class="lang-en" style="display:none;">Application for Family Member Certificate</span></h2>
+            <h4>(As per Memo No.31346/Ser.II.2/2010-Revenue Department - dated.25.10.2010)</h4>
+            <p><strong><span class="lang-te">(ప్రభుత్వోద్యోగులకు-ప్రభుత్వము నుంచి రావలసిన బకాయిలు /కారుణ్య నియమకాల కొరకు)</span><span class="lang-en" style="display:none;">(For Govt Employees - Arrears from Govt / Compassionate Appointments)</span></strong></p>
+        </div>
+
+        <div class="salutation">
+            <span class="lang-te">నకు,</span><span class="lang-en" style="display:none;">To,</span><br>
+            <input type="text" style="width: 250px;"> <span class="lang-te">తహశీల్దారు వారికి,</span><span class="lang-en" style="display:none;">The Tahsildar,</span><br>
+            <input type="text" style="width: 200px;"> <span class="lang-te">జిల్లా,</span><span class="lang-en" style="display:none;">District,</span><br>
+            <input type="text" style="width: 200px;"> <span class="lang-te">గ్రామ కాపరస్తులు శ్రీ/శ్రీమతి</span><span class="lang-en" style="display:none;">Resident of village, Sri/Smt</span> <input type="text" style="width: 300px;"><br>
+            <span class="lang-te">తండ్రి/భర్త</span><span class="lang-en" style="display:none;">Father/Husband</span> <input type="text" style="width: 300px;"> <span class="lang-te">వ్రాసుకొను దరఖాస్తు విన్నపములు.</span><span class="lang-en" style="display:none;">submits this application.</span>
+        </div>
+
+        <div class="content-line">
+            <span class="lang-te">అయ్యా,</span><span class="lang-en" style="display:none;">Sir,</span><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="lang-te">నేను</span><span class="lang-en" style="display:none;">I am residing at</span> <input type="text" style="width: 150px;"> <span class="lang-te">గ్రామములో</span><span class="lang-en" style="display:none;">village,</span> <input type="text" style="width: 200px;"> <span class="lang-te">లోకాలిటీ / ల్యాండ్ మార్క్</span><span class="lang-en" style="display:none;">Locality / Landmark,</span> <input type="text" style="width: 150px;"> <span class="lang-te">డోరు నంబరు గల యింటిలో గత</span><span class="lang-en" style="display:none;">Door No, for the past</span> <input type="text" style="width: 150px;"> <span class="lang-te">కాలము నుండి నా కుటుంబ సభ్యులతో నివసించుచున్నాను.</span><span class="lang-en" style="display:none;">period with my family members.</span>
+        </div>
+
+        <div class="content-line">
+            <span class="lang-te">నా</span><span class="lang-en" style="display:none;">My</span> <input type="text" style="width: 250px;"> <span class="lang-te">గారైన శ్రీ/శ్రీమతి</span><span class="lang-en" style="display:none;">Sri/Smt</span> <input type="text" style="width: 250px;"><br>
+            <span class="lang-te">తండ్రి/భర్త</span><span class="lang-en" style="display:none;">Father/Husband</span> <input type="text" style="width: 200px;"> <span class="lang-te">గారు</span><span class="lang-en" style="display:none;">working as</span> <input type="text" style="width: 180px;"> <span class="lang-te">చేస్తూ దివి</span><span class="lang-en" style="display:none;">on date</span> <input type="text" style="width: 150px;"> <span class="lang-te">వతేదిన</span><span class="lang-en" style="display:none;">at</span> <input type="text" style="width: 200px;"> <span class="lang-te">వలన</span><span class="lang-en" style="display:none;">due to</span> <input type="text" style="width: 150px;"> <span class="lang-te">గ్రామములో చనిపోయినారు.</span><span class="lang-en" style="display:none;">village passed away.</span><br>
+            <span class="lang-te">చనిపోయిన నా</span><span class="lang-en" style="display:none;">The deceased</span> <input type="text" style="width: 250px;"> <span class="lang-te">గారికి ఈ దిగువ తెలిపిన కుటుంబ సభ్యులు గలరు.</span><span class="lang-en" style="display:none;">has the following family members.</span>
+        </div>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 10%;"><span class="lang-te">వరుస నెం.</span><span class="lang-en" style="display:none;">S.No</span></th>
+                    <th style="width: 45%;"><span class="lang-te">కుటుంబ సభ్యుని పేరు</span><span class="lang-en" style="display:none;">Family Member Name</span></th>
+                    <th style="width: 30%;"><span class="lang-te">మరణించిన వ్యక్తితో బంధుత్వం</span><span class="lang-en" style="display:none;">Relationship with Deceased</span></th>
+                    <th style="width: 15%;"><span class="lang-te">సుమారు వయస్సు</span><span class="lang-en" style="display:none;">Approx Age</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>2</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>3</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>4</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>5</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>6</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+            </tbody>
+        </table>
+
+        <div class="content-line">
+            <span class="lang-te">చనిపోయిన నా</span><span class="lang-en" style="display:none;">From the deceased</span> <input type="text" style="width: 250px;"> <span class="lang-te">గారికి ప్రభుత్వము నుండి రావలసిన</span><span class="lang-en" style="display:none;">benefits due from Govt</span> <input type="text" style="width: 250px;"><br>
+            <span class="lang-te">పొందు నిమిత్తం మమ్ములను కుటుంబ సభ్యులు గా నిర్ధారించుమూ కుటుంబ సభ్యత్వ ధృవీకరణ ధృవపత్రము మంజూరు చేయవలసినదిగా కోరుచున్నాను.</span>
+            <span class="lang-en" style="display:none;">To receive these, kindly issue a Family Member Certificate certifying us as the family members.</span>
+        </div>
+
+        <div class="content-line">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="lang-te">ఇందుతో పాటు నా</span><span class="lang-en" style="display:none;">Along with this, my</span> <input type="text" style="width: 200px;"> <span class="lang-te">లేటు శ్రీ/శ్రీమతి</span><span class="lang-en" style="display:none;">Late Sri/Smt</span> <input type="text" style="width: 250px;"><br>
+            <span class="lang-te">గారి యొక్క మరణ ధృవపత్రము జతపరుచుచున్నాను.</span><span class="lang-en" style="display:none;">'s death certificate is attached herewith.</span>
+        </div>
+
+        <div class="applicant-details">
+            <u><span class="lang-te">దరఖాస్తుదారుని వివరములు :</span><span class="lang-en" style="display:none;">Applicant Details :</span></u>
+            <div class="grid-3col" style="font-weight: normal; margin-top: 10px;">
+                <div><span class="lang-te">లింగము:</span><span class="lang-en" style="display:none;">Gender:</span> <input type="text" style="width: 120px;"></div>
+                <div><span class="lang-te">పుట్టిన తేది:</span><span class="lang-en" style="display:none;">Date of Birth:</span> <input type="text" style="width: 100px;"></div>
+                <div><span class="lang-te">పిన్ కోడ్:</span><span class="lang-en" style="display:none;">Pin Code:</span> <input type="text" style="width: 100px;"></div>
+            </div>
+            <div class="grid-2col" style="font-weight: normal; margin-top: 5px;">
+                <div><span class="lang-te">రేషన్ కార్డ్ నంబరు:</span><span class="lang-en" style="display:none;">Ration Card No:</span> <input type="text" style="width: 150px;"></div>
+                <div><span class="lang-te">ఆధార్ నంబరు:</span><span class="lang-en" style="display:none;">Aadhaar No:</span> <input type="text" style="width: 150px;"></div>
+            </div>
+        </div>
+
+        <div class="signature-block">
+            <span class="lang-te">భవదీయుడు</span><span class="lang-en" style="display:none;">Yours faithfully</span><br><br><br>
+            ( <input type="text" style="width: 200px; text-align: center;"> )
+        </div>
+
+        <div class="footer-section">
+            <div class="doc-list" style="width: 55%;">
+                <strong><span class="lang-te">దరఖాస్తు తో జత పరచవలసినవి :</span><span class="lang-en" style="display:none;">Documents to be attached :</span></strong>
+                <ol>
+                    <li><span class="lang-te">అప్లికేషన్ ఫారమ్</span><span class="lang-en" style="display:none;">Application Form</span></li>
+                    <li><span class="lang-te">రేషన్ కార్డ్డు/ఆధార్ కార్డ్డు/ఇంటిపన్ను రశీదు</span><span class="lang-en" style="display:none;">Ration Card / Aadhaar Card / House Tax Receipt</span> <span class="required-star">*</span></li>
+                    <li><span class="lang-te">మరణ ధృవీకరణ పత్రము</span><span class="lang-en" style="display:none;">Death Certificate</span> <span class="required-star">*</span></li>
+                </ol>
+                <div class="note-text">( <span class="required-star">*</span> <span class="lang-te">ఖచ్చితముగా జత పరచవలెను</span><span class="lang-en" style="display:none;">Compulsorily to be attached</span> )</div>
+            </div>
+
+            <div class="contact-fields" style="width: 40%;">
+                <div>1. <span class="lang-te">ల్యాండ్ నెం</span><span class="lang-en" style="display:none;">Landline No</span>-------------------</div>
+                <div>2. <span class="lang-te">మొబైల్ నెం</span><span class="lang-en" style="display:none;">Mobile No</span>-------------------</div>
+                <div>3. <span class="lang-te">ఈ మెయిల్ ఐ.డీ</span><span class="lang-en" style="display:none;">Email ID</span>-------------------</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: PRAKATANA (PUBLIC NOTICE) -->
+    <div class="page">
+        <div style="text-align: right; font-weight: bold; margin-bottom: 10px;">
+            <span class="lang-te">తహశీల్దారు గారి కార్యాలయము,</span><span class="lang-en" style="display:none;">Office of the Tahsildar,</span><br>
+            ...................................................
+        </div>
+
+        <div class="top-meta">
+            <div><span class="lang-te">కేసు సంఖ్య:</span><span class="lang-en" style="display:none;">Case No:</span> <input type="text" style="width: 50px;"> / <input type="text" style="width: 60px;" value="20"></div>
+            <div><span class="lang-te">తేది:</span><span class="lang-en" style="display:none;">Date:</span> <input type="text" style="width: 40px;"> / <input type="text" style="width: 40px;"> / <input type="text" style="width: 60px;" value="20"></div>
+        </div>
+
+        <div style="text-align: center; margin: 15px 0;">
+            <h2 style="margin: 0; text-decoration: underline;"><span class="lang-te">ప్రకటన</span><span class="lang-en" style="display:none;">PUBLIC NOTICE</span></h2>
+        </div>
+
+        <div class="content-line">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="lang-te">ఇందుమూలముగా</span><span class="lang-en" style="display:none;">This is to notify that in</span> <input type="text" style="width: 200px;"> <span class="lang-te">మండలం</span><span class="lang-en" style="display:none;">Mandal,</span> <input type="text" style="width: 200px;"> <span class="lang-te">గ్రామ సమస్త ప్రజలకు తెలియజేయునది ఏమనగా దివంగత</span><span class="lang-en" style="display:none;">village to all public, late</span> <input type="text" style="width: 250px;"><br>
+            <span class="lang-te">తండ్రి/భర్త</span><span class="lang-en" style="display:none;">Father/Husband</span> <input type="text" style="width: 250px;"> <span class="lang-te">గారు</span><span class="lang-en" style="display:none;">District</span> <input type="text" style="width: 180px;"> <span class="lang-te">జిల్లా,</span><span class="lang-en" style="display:none;">Mandal</span> <input type="text" style="width: 180px;"><br>
+            <span class="lang-te">మండలం,</span><span class="lang-en" style="display:none;">Village resident, on date</span> <input type="text" style="width: 200px;"> <span class="lang-te">గ్రామ వాస్తవ్యులనియూ, వీరు ది||</span><span class="lang-en" style="display:none;">passed away, and</span> <input type="text" style="width: 150px;"> <span class="lang-te">న మరణించినందున ఈ క్రింద చూపిన వారిని సదరు యొక్క కుటుంబ సభ్యులుగా ధృవీకరించడమైనది.</span><span class="lang-en" style="display:none;">the following persons are identified as family members.</span>
+        </div>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 8%;"><span class="lang-te">క్ర.సం.</span><span class="lang-en" style="display:none;">S.No</span></th>
+                    <th style="width: 37%;"><span class="lang-te">కుటుంబ సభ్యుని పేరు</span><span class="lang-en" style="display:none;">Family Member Name</span></th>
+                    <th style="width: 25%;"><span class="lang-te">యజమానితో గల సంబంధం</span><span class="lang-en" style="display:none;">Relationship with Head</span></th>
+                    <th style="width: 12%;"><span class="lang-te">వయస్సు</span><span class="lang-en" style="display:none;">Age</span></th>
+                    <th style="width: 18%;"><span class="lang-te">వైవాహిక స్థితి</span><span class="lang-en" style="display:none;">Marital Status</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>2</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>3</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>4</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>5</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>6</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+            </tbody>
+        </table>
+
+        <div class="content-line">
+            <span class="lang-te">కావున పైన పేర్కొనబడిన వారు లేట్</span><span class="lang-en" style="display:none;">Therefore, regarding certifying the above mentioned persons as family members of Late</span> <input type="text" style="width: 250px;"> <span class="lang-te">గారి యొక్క కుటుంబ సభ్యులుగా ధృవీకరించుటకు ఎవరికైనా ఎట్టి ఆక్షేపణలు/అభ్యంతరములు ఉన్న యెడల (15) రోజులలో శ్రీయుత తహశీల్దారు,</span><span class="lang-en" style="display:none;">if anyone has any objections, they should submit in writing to Tahsildar,</span> <input type="text" style="width: 200px;"> <span class="lang-te">గారికి లిఖితపూర్వకముగా తెలియజేయవలెను. తదుపరి వచ్చు ఆక్షేపణలు స్వీకరించబడవని తెలియజేయడమైనది.</span><span class="lang-en" style="display:none;">within 15 days. Objections received thereafter will not be accepted.</span>
+        </div>
+
+        <div style="text-align: right; margin-top: 40px; font-weight: bold;">
+            <span class="lang-te">తహశీల్దారు,</span><span class="lang-en" style="display:none;">Tahsildar,</span><br>
+            ...................................................
+        </div>
+
+        <div style="margin-top: 40px; font-size: 12px;">
+            <strong><span class="lang-te">దీని ప్రతులు:</span><span class="lang-en" style="display:none;">Copies to:</span></strong>
+            <ol style="padding-left: 20px; margin-top: 5px;">
+                <li><span class="lang-te">గ్రామ పంచాయితీ కార్యాలయం నోటీసు బోర్డు పై అతికించనైనది.</span><span class="lang-en" style="display:none;">Affixed on Gram Panchayat Office Notice Board.</span></li>
+                <li><span class="lang-te">తహశీల్దారు కార్యాలయము, నోటీసు బోర్డు పై అతికించనైనది.</span><span class="lang-en" style="display:none;">Affixed on Tahsildar Office Notice Board.</span></li>
+                <li><span class="lang-te">శ్రీయుత రాజస్వ మండలాధికారి,</span><span class="lang-en" style="display:none;">Revenue Inspector,</span> <input type="text" style="width: 150px;"> <span class="lang-te">గారికి</span><span class="lang-en" style="display:none;">for info.</span></li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- PAGE 3: PANCHANAMA -->
+    <div class="page">
+        <div style="text-align: center; margin-bottom: 15px;">
+            <h2 style="margin: 0; text-decoration: underline;"><span class="lang-te">పంచనామా</span><span class="lang-en" style="display:none;">PANCHANAMA</span></h2>
+            <div><strong>(<span class="lang-te">కుటుంబ సభ్యుల ధృవీకరణ కొరకు</span><span class="lang-en" style="display:none;">For Family Member Certification</span>)</strong></div>
+        </div>
+
+        <div style="margin-bottom: 15px;">
+            <strong><span class="lang-te">పంచులు:</span><span class="lang-en" style="display:none;">Panchas (Witnesses):</span></strong>
+            <ol style="padding-left: 20px; margin: 5px 0;">
+                <li><input type="text" style="width: 90%;"></li>
+                <li><input type="text" style="width: 90%;"></li>
+                <li><input type="text" style="width: 90%;"></li>
+            </ol>
+        </div>
+
+        <div class="content-line">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="lang-te">పై పంచులమైన మేము మండల రెవెన్యూ ఇన్స్పెక్టర్</span><span class="lang-en" style="display:none;">We, the above panchas, called by Mandal Revenue Inspector</span> <input type="text" style="width: 220px;"> <span class="lang-te">గారి పిలుపు మేరకు లేట్</span><span class="lang-en" style="display:none;">regarding Late</span> <input type="text" style="width: 200px;"> <span class="lang-te">తండ్రి/భర్త</span><span class="lang-en" style="display:none;">S/o, W/o</span> <input type="text" style="width: 200px;"><br>
+            <span class="lang-te">నివాసమగు</span><span class="lang-en" style="display:none;">resident of</span> <input type="text" style="width: 180px;"> <span class="lang-te">గ్రామము గారు ది||</span><span class="lang-en" style="display:none;">village, on date</span> <input type="text" style="width: 130px;"> <span class="lang-te">తేదిన మరణించినందున వారి వారసుల విచారణకొరకు పిలువగా వారి ఇంటివద్ద హాజరైనాము. మా సమక్షములో మండల రెవెన్యూ ఇన్స్పెక్టర్</span><span class="lang-en" style="display:none;">passed away. Enquiry conducted at home by MRI regarding family members</span> <input type="text" style="width: 200px;"> <span class="lang-te">గారు లేట్</span><span class="lang-en" style="display:none;">of Late</span> <input type="text" style="width: 200px;"> <span class="lang-te">గారి కుటుంబ సభ్యుల వివరములు విచారించినారు. అట్టి విచారణలో ఈ క్రింద పేర్కొన్నవారు సదరు మరణించిన వ్యక్తియొక్క కుటుంబ సభ్యులుగా కలరని తెలిసినాము.</span><span class="lang-en" style="display:none;">and identified the following legal heirs.</span>
+        </div>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 8%;"><span class="lang-te">క్ర.సం.</span><span class="lang-en" style="display:none;">S.No</span></th>
+                    <th style="width: 37%;"><span class="lang-te">కుటుంబ సభ్యుని పేరు</span><span class="lang-en" style="display:none;">Family Member Name</span></th>
+                    <th style="width: 25%;"><span class="lang-te">యజమానితో గల సంబంధం</span><span class="lang-en" style="display:none;">Relationship with Head</span></th>
+                    <th style="width: 12%;"><span class="lang-te">వయస్సు</span><span class="lang-en" style="display:none;">Age</span></th>
+                    <th style="width: 18%;"><span class="lang-te">వైవాహిక స్థితి</span><span class="lang-en" style="display:none;">Marital Status</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>2</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>3</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>4</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>5</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>6</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+            </tbody>
+        </table>
+
+        <div class="content-line">
+            <span class="lang-te">పైవిషములన్నియూ చదివి వినిపించగా యదార్ధమని గ్రహించి ఎవరి ప్రమేయం లేకుండా మంచి స్థితిలో యుండి ఈ దిగువ సంతకములు చేసినాము.</span>
+            <span class="lang-en" style="display:none;">All the above details were read out to us and verified as true. We sign below in sound mind without any influence.</span>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; margin-top: 30px;">
+            <div>
+                <span class="lang-te">స్థలము:</span><span class="lang-en" style="display:none;">Place:</span> <input type="text" style="width: 150px;"><br>
+                <span class="lang-te">తేదీ:</span><span class="lang-en" style="display:none;">Date:</span> <input type="text" style="width: 150px;">
+            </div>
+            <div style="text-align: right;">
+                <strong><span class="lang-te">పంచు ల సంతకములు</span><span class="lang-en" style="display:none;">Signatures of Panchas</span></strong><br><br>
+                1. ...................................................<br>
+                2. ...................................................<br>
+                3. ...................................................
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 4: CERTIFICATE ISSUANCE -->
+    <div class="page">
+        <div class="header">
+            <h3><span class="lang-te">తెలంగాణ ప్రభుత్వము</span><span class="lang-en" style="display:none;">GOVERNMENT OF TELANGANA</span></h3>
+            <h4><span class="lang-te">రెవిన్యూ శాఖ</span><span class="lang-en" style="display:none;">REVENUE DEPARTMENT</span></h4>
+            <div class="govt-logo">
+                <svg width="60" height="60" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="#000" stroke-width="3"/>
+                    <circle cx="50" cy="50" r="38" fill="none" stroke="#000" stroke-width="1"/>
+                    <text x="50" y="55" font-size="10" text-anchor="middle" font-weight="bold">GOVT OF TELANGANA</text>
+                </svg>
+            </div>
+        </div>
+
+        <div class="top-meta">
+            <div><span class="lang-te">కేసు సంఖ్య:</span><span class="lang-en" style="display:none;">Case No:</span> <input type="text" style="width: 50px;"> / <input type="text" style="width: 60px;" value="20"></div>
+            <div><span class="lang-te">తేది:</span><span class="lang-en" style="display:none;">Date:</span> <input type="text" style="width: 40px;"> / <input type="text" style="width: 40px;"> / <input type="text" style="width: 60px;" value="20"></div>
+        </div>
+
+        <div style="text-align: center; margin: 15px 0;">
+            <h2 style="margin: 0; text-decoration: underline;"><span class="lang-te">కుటుంబ సభ్యుల ధృవీకరణ పత్రము</span><span class="lang-en" style="display:none;">FAMILY MEMBER CERTIFICATE</span></h2>
+        </div>
+
+        <div class="content-line">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" style="width: 150px;"> <span class="lang-te">జిల్లా</span><span class="lang-en" style="display:none;">District,</span> <input type="text" style="width: 150px;"> <span class="lang-te">మండలం</span><span class="lang-en" style="display:none;">Mandal,</span> <input type="text" style="width: 150px;"> <span class="lang-te">గ్రామ వాస్తవ్యులైన లేట్</span><span class="lang-en" style="display:none;">Village resident Late</span> <input type="text" style="width: 200px;"><br>
+            <span class="lang-te">తండ్రి/భర్త</span><span class="lang-en" style="display:none;">Father/Husband</span> <input type="text" style="width: 200px;"> <span class="lang-te">గారు తేది||</span><span class="lang-en" style="display:none;">on date</span> <input type="text" style="width: 120px;"> <span class="lang-te">న మరణించినారనియు, ఈ దిగువ పేర్కొనబడిన వారు మరణించిన వ్యక్తియొక్క కుటుంబ సభ్యులుగా ధృవీకరించడమైనది.</span><span class="lang-en" style="display:none;">passed away, and the following persons are hereby certified as the family members of the deceased.</span>
+        </div>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th style="width: 8%;"><span class="lang-te">క్ర.సం.</span><span class="lang-en" style="display:none;">S.No</span></th>
+                    <th style="width: 37%;"><span class="lang-te">కుటుంబ సభ్యుని పేరు</span><span class="lang-en" style="display:none;">Family Member Name</span></th>
+                    <th style="width: 25%;"><span class="lang-te">యజమానితో గల సంబంధం</span><span class="lang-en" style="display:none;">Relationship with Head</span></th>
+                    <th style="width: 12%;"><span class="lang-te">వయస్సు</span><span class="lang-en" style="display:none;">Age</span></th>
+                    <th style="width: 18%;"><span class="lang-te">వైవాహిక స్థితి</span><span class="lang-en" style="display:none;">Marital Status</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>2</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>3</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>4</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>5</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+                <tr><td>6</td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td></tr>
+            </tbody>
+        </table>
+
+        <div class="content-line" style="margin-top: 25px;">
+            <span class="lang-te">ఈట్టి ధృవీకరణ పత్రము</span><span class="lang-en" style="display:none;">This certificate is issued solely for the purpose of</span> <input type="text" style="width: 300px;"> <span class="lang-te">కొరకు మాత్రమే జారీచేయనైనది.</span><span class="lang-en" style="display:none;">.</span>
+        </div>
+
+        <div style="text-align: right; margin-top: 50px; font-weight: bold;">
+            <span class="lang-te">తహశీల్దారు</span><span class="lang-en" style="display:none;">Tahsildar</span><br>
+            ...................................................
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'te';
+        function toggleLanguage() {
+            const teElements = document.querySelectorAll('.lang-te');
+            const enElements = document.querySelectorAll('.lang-en');
+
+            if (currentLang === 'te') {
+                teElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => el.style.display = 'inline');
+                currentLang = 'en';
+            } else {
+                teElements.forEach(el => el.style.display = 'inline');
+                enElements.forEach(el => el.style.display = 'none');
+                currentLang = 'te';
+            }
+        }
+    </script>
+</body>
+</html>

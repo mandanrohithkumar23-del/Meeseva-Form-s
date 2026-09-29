@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MeeSeva Application Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+        body {
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            background: #ffffff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm 15mm;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+            position: relative;
+            font-size: 13px;
+            line-height: 1.6;
+            color: #000;
+        }
+        .header {
+            text-align: center;
+            position: relative;
+            margin-bottom: 15px;
+        }
+        .header-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .logo-placeholder {
+            border: 2px solid #2e7d32;
+            border-radius: 50%;
+            width: 70px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2e7d32;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .price-tag {
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-weight: bold;
+        }
+        .title {
+            font-weight: bold;
+            font-size: 16px;
+            margin-top: 5px;
+            text-decoration: underline;
+        }
+        input[type="text"] {
+            border: none;
+            border-bottom: 1px dotted #000;
+            background: transparent;
+            outline: none;
+            padding: 0 5px;
+            font-size: 13px;
+            color: #00008b;
+        }
+        .salutation {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .statement {
+            text-indent: 30px;
+            text-align: justify;
+            margin: 10px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #000;
+            text-align: center;
+            padding: 6px;
+            height: 28px;
+        }
+        th {
+            font-weight: bold;
+            background-color: #f9f9f9;
+        }
+        td input {
+            width: 100%;
+            border: none !important;
+            text-align: center;
+        }
+        .section-title {
+            font-weight: bold;
+            margin-top: 15px;
+            margin-bottom: 5px;
+        }
+        .list-item {
+            margin-left: 20px;
+            margin-bottom: 3px;
+        }
+        .bottom-grid {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .bottom-left, .bottom-right {
+            width: 48%;
+        }
+        .signature-area {
+            text-align: right;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .controls {
+                display: none !important;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                height: auto;
+                padding: 15mm 10mm;
+            }
+            input[type="text"] {
+                border-bottom: none !important;
+                color: #000;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <button class="btn" onclick="toggleLanguage()">Switch Language (తెలుగు / English)</button>
+        <button class="btn" onclick="window.print()">Print Form</button>
+    </div>
+
+    <div class="page">
+        <div class="header">
+            <div class="logo-placeholder">మీ సేవ</div>
+            <div class="price-tag"><span class="lang-te">వెల: ₹ 1/-</span><span class="lang-en" style="display:none;">Price: ₹ 1/-</span></div>
+            <div class="title lang-te">వ్యవసాయ భూమిపై వచ్చు ఆదాయ ధృవపత్రము పొందుటకు దరఖాస్తు</div>
+            <div class="title lang-en" style="display:none;">Application for Agricultural Income Certificate</div>
+        </div>
+
+        <div class="salutation">
+            <span class="lang-te">శ్రీ తహశీల్దారు</span><span class="lang-en" style="display:none;">To The Tahsildar</span><br>
+            <input type="text" style="width: 200px;"> <span class="lang-te">వారికి,</span><span class="lang-en" style="display:none;">,</span><br>
+            <input type="text" style="width: 200px;"> <span class="lang-te">జిల్లా</span><span class="lang-en" style="display:none;">District</span>
+        </div>
+
+        <div class="salutation" style="margin-top: 15px;">
+            <span class="lang-te">అయ్యా!</span><span class="lang-en" style="display:none;">Respected Sir,</span>
+        </div>
+        
+        <div class="statement">
+            <span class="lang-te">నాకు</span><span class="lang-en" style="display:none;">I am</span> 
+            <input type="text" style="width: 250px;"> 
+            <span class="lang-te">గ్రామంలో</span><span class="lang-en" style="display:none;">residing at Village,</span> 
+            <input type="text" style="width: 200px;"> 
+            <span class="lang-te">మండలంలో ఈ క్రింది తెలియవచ్చిన సర్వే నంబర్లలో వ్యవసాయ భూమికి</span>
+            <span class="lang-en" style="display:none;">Mandal. For the agricultural land under the survey numbers listed below, in the year</span> 
+            <input type="text" style="width: 150px;"> 
+            <span class="lang-te">సంవత్సరంలో పట్టాదారు పాసుపుస్తకము/టైటిల్ డీడ్ నెం.</span>
+            <span class="lang-en" style="display:none;">, holding Pattadar Passbook/Title Deed No.</span> 
+            <input type="text" style="width: 180px;"> 
+            <span class="lang-te">పొందియుంటిని.</span><span class="lang-en" style="display:none;">.</span>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 10%;"><span class="lang-te">క్రమ సంఖ్య</span><span class="lang-en" style="display:none;">S.No</span></th>
+                    <th style="width: 30%;"><span class="lang-te">సర్వే నెంబరు</span><span class="lang-en" style="display:none;">Survey Number</span></th>
+                    <th style="width: 25%;"><span class="lang-te">విస్తీర్ణం</span><span class="lang-en" style="display:none;">Extent / Area</span></th>
+                    <th style="width: 35%;"><span class="lang-te">పాసు పుస్తకము/ టైటిల్ డీడ్ నెం.</span><span class="lang-en" style="display:none;">Passbook / Title Deed No.</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                    <td><input type="text"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="statement">
+            <span class="lang-te">సదరు భూములలో నేను</span><span class="lang-en" style="display:none;">From the said land, by cultivating</span> 
+            <input type="text" style="width: 300px;"> 
+            <span class="lang-te">పంట ద్వారా నేను ఒక సంవత్సరమునకు (ఫసలి)కి రూ.</span>
+            <span class="lang-en" style="display:none;">crop, my annual income is Rs.</span> 
+            <input type="text" style="width: 200px;"> 
+            <span class="lang-te">/-ల ఆదాయం పొందుతున్నాను. నాకు బ్యాంకు లోను నిమిత్తం ఈ ధృవపత్రము అవసరమై ఉన్నది. కావున ఏలిన వారు నాకు గల వ్యవసాయ భూములపై ఆదాయ ధృవపత్రము యివ్వవలసినదిగా కోరుచున్నాను.</span>
+            <span class="lang-en" style="display:none;">/-. I require this certificate for obtaining a bank loan. Hence, I request you to kindly issue the Agricultural Income Certificate.</span>
+        </div>
+
+        <div class="section-title"><span class="lang-te">జatపరచబడిన పత్రాలు:</span><span class="lang-en" style="display:none;">Enclosures Attached:</span></div>
+        <div class="list-item"><span class="lang-te">01. పట్టదారు పాసు పుస్తకములు / టైటిల్ డీడ్ నకలు</span><span class="lang-en" style="display:none;">01. Copy of Pattadar Passbook / Title Deed</span></div>
+        <div class="list-item"><span class="lang-te">02. రేషన్ కార్డు నకలు</span><span class="lang-en" style="display:none;">02. Copy of Ration Card</span></div>
+        <div class="list-item"><span class="lang-te">03. నీటి తీరువా పన్నుల నకలు</span><span class="lang-en" style="display:none;">03. Copy of Water Tax Receipt</span></div>
+
+        <div class="signature-area">
+            <span class="lang-te">ఇట్లు</span><span class="lang-en" style="display:none;">Yours faithfully,</span><br><br>
+            <span class="lang-te">(తమ విధేయుడు)</span><span class="lang-en" style="display:none;">(Applicant Signature)</span>
+        </div>
+
+        <hr style="margin-top: 20px; border: 0.5px solid #ccc;">
+
+        <div class="bottom-grid">
+            <div class="bottom-left">
+                <div class="section-title"><span class="lang-te">జతపరచవలసినవి:</span><span class="lang-en" style="display:none;">Mandatory Attachments:</span></div>
+                <div class="list-item"><span class="lang-te">1. అప్లికేషన్ ఫారమ్*</span><span class="lang-en" style="display:none;">1. Application Form*</span></div>
+                <div class="list-item"><span class="lang-te">2. రేషన్ కార్డ్ / ఆధార్ కార్డ్ / ఓటరు గుర్తింపుకార్డు నకలు #</span><span class="lang-en" style="display:none;">2. Copy of Ration Card / Aadhaar Card / Voter ID #</span></div>
+                <div style="font-size: 11px; margin-top: 5px;">
+                    <span class="lang-te">(*ఖచ్చితంగా జతపరచవలెను. #- ఏదో ఒకటి జతచేయవలెను)</span>
+                    <span class="lang-en" style="display:none;">(*Mandatory attachment. #- Attach any one)</span>
+                </div>
+            </div>
+            <div class="bottom-right">
+                <div style="margin-top: 20px;">
+                    <span class="lang-te">1. ల్యాండ్ ఫోన్ నెం.</span><span class="lang-en" style="display:none;">1. Landline Phone No.</span> 
+                    <input type="text" style="width: 150px;"><br><br>
+                    <span class="lang-te">2. మొబైల్ ఫోన్ నెం.</span><span class="lang-en" style="display:none;">2. Mobile Phone No.</span> 
+                    <input type="text" style="width: 150px;"><br><br>
+                    <span class="lang-te">3. ఈ మెయిల్ ఐ.డి.</span><span class="lang-en" style="display:none;">3. Email ID</span> 
+                    <input type="text" style="width: 170px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentLang = 'te';
+        function toggleLanguage() {
+            const teElements = document.querySelectorAll('.lang-te');
+            const enElements = document.querySelectorAll('.lang-en');
+
+            if (currentLang === 'te') {
+                teElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => el.style.display = 'inline');
+                currentLang = 'en';
+            } else {
+                teElements.forEach(el => el.style.display = 'inline');
+                teElements.forEach(el => el.style.display = 'none');
+                currentLang = 'te';
+            }
+        }
+    </script>
+</body>
+</html>

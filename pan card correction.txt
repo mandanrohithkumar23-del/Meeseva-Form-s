@@ -1,0 +1,1064 @@
+Conversation with Gemini
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FORM NO. 93 - Application for Allotment of PAN</title>
+<style>
+    * {
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+
+    /* LOGIN OVERLAY STYLING */
+    #login-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.85);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    .login-box {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        width: 320px;
+    }
+
+    .login-box h2 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 18px;
+        color: #333;
+    }
+
+    .login-input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+        outline: none;
+    }
+
+    .btn-login {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .btn-login:hover {
+        background-color: #0056b3;
+    }
+
+    #error-msg {
+        color: red;
+        font-size: 12px;
+        margin-top: 10px;
+        display: none;
+    }
+
+    /* User Info Bar - Fixed Top Right Corner (Screen Only) */
+    .user-info-corner {
+        position: fixed;
+        top: 15px;
+        right: 20px;
+        text-align: right;
+        font-size: 13px;
+        font-weight: bold;
+        color: #333;
+        background: #ffffff;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        z-index: 10000;
+    }
+
+    /* Print Control Bar */
+    .action-bar {
+        position: sticky;
+        top: 10px;
+        z-index: 1000;
+        background: #333;
+        padding: 10px 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .btn-print {
+        background-color: #28a745;
+        color: white;
+        border: none;
+        padding: 10px 25px;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.2s;
+    }
+
+    .btn-print:hover {
+        background-color: #218838;
+    }
+
+    .page {
+        width: 210mm;
+        min-height: 297mm;
+        padding: 8mm;
+        background: #fff;
+        border: 2px solid #000;
+        margin-bottom: 20px;
+        position: relative;
+    }
+
+    .inner-border {
+        border: 1px solid #000;
+        padding: 4px;
+        height: 100%;
+    }
+
+    .header-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 5px;
+    }
+
+    .header-table td {
+        vertical-align: top;
+    }
+
+    .photo-box {
+        width: 130px;
+        height: 150px;
+        border: 1px solid #000;
+        text-align: center;
+        font-size: 9px;
+        padding: 6px 4px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .header-title-container {
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    .header-title {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 4px;
+    }
+
+    .header-subtitle {
+        font-size: 13px;
+        font-weight: bold;
+        margin-bottom: 6px;
+    }
+
+    .header-desc {
+        font-size: 13px;
+        font-weight: bold;
+        margin-bottom: 4px;
+    }
+
+    .header-subdesc {
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .char-grid {
+        display: flex;
+    }
+
+    .char-input {
+        width: 16px;
+        height: 18px;
+        border: 1px solid #000;
+        border-right: none;
+        text-align: center;
+        font-size: 11px;
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 0;
+        outline: none;
+        background: transparent;
+    }
+
+    .char-input:last-child {
+        border-right: 1px solid #000;
+    }
+
+    .char-input:focus {
+        background-color: #e8f0fe;
+    }
+
+    .standard-input {
+        width: 100%;
+        height: 18px;
+        border: 1px solid #000;
+        font-size: 11px;
+        padding: 2px 4px;
+        outline: none;
+    }
+
+    .section-header {
+        background-color: #ffffff;
+        font-weight: bold;
+        font-size: 11px;
+        padding: 3px 5px;
+        border: 1px solid #000;
+        text-align: center;
+    }
+
+    .form-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 10px;
+    }
+
+    .form-table td {
+        border: 1px solid #000;
+        padding: 2px 4px;
+        vertical-align: middle;
+    }
+
+    .col-sr {
+        width: 45px;
+        text-align: left;
+        font-weight: bold;
+    }
+
+    .col-label {
+        width: 140px;
+        font-weight: bold;
+    }
+
+    .col-label-sub {
+        width: 140px;
+        padding-left: 10px;
+    }
+
+    .bg-gray {
+        background-color: #d3d3d3;
+    }
+
+    .flex-grid {
+        display: inline-flex;
+    }
+
+    .dec-box {
+        border: 1.5px solid #000;
+        padding: 12px;
+        margin-top: 10px;
+    }
+
+    .dec-title {
+        text-align: center;
+        font-weight: bold;
+        font-size: 13px;
+        font-style: italic;
+        border-bottom: 1.5px solid #000;
+        padding-bottom: 4px;
+        margin-bottom: 10px;
+    }
+
+    .signature-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+    }
+
+    .signature-box {
+        width: 240px;
+        height: 80px;
+        border: 1px solid #000;
+    }
+
+    .sig-label {
+        text-align: center;
+        font-size: 9px;
+        margin-top: 4px;
+        font-weight: bold;
+        width: 240px;
+    }
+
+    /* Print Optimization Rules */
+    @media print {
+        body { background: none; padding: 0; }
+        .action-bar, .user-info-corner, #login-overlay { display: none !important; }
+        .page { margin: 0; border: 2px solid #000; page-break-after: always; }
+        .char-input { border-color: #000 !important; }
+    }
+</style>
+</head>
+<body>
+
+
+<!-- ACTION BAR WITH PRINT BUTTON -->
+<div class="action-bar">
+    <button class="btn-print" onclick="window.print()">🖨️ Print Form / Save as PDF</button>
+</div>
+
+<!-- PAGE 1 -->
+<div class="page">
+    <div class="inner-border">
+        
+        <!-- Header -->
+        <table class="header-table">
+            <tr>
+                <td style="width: 135px;">
+                    <div class="photo-box">
+                        Recent colour<br>photograph of the applicant<br><br>
+                        <strong>(4.5 cm x 3.5 cm)</strong><br><br>
+                        with Sign/Left thumb<br>impression across the photo of<br>the applicant
+                    </div>
+                </td>
+                <td>
+                    <div class="header-title-container">
+                        <div class="header-title">FORM NO. 93</div>
+                        <div class="header-subtitle">[See rule 158]</div>
+                        <div class="header-desc">Application for Allotment of Permanent Account Number</div>
+                        <div class="header-subdesc">[For an Individual being a Citizen of India]</div>
+                    </div>
+                </td>
+                <td style="width: 135px;">
+                    <div class="photo-box">
+                        Recent colour<br>photograph of the applicant<br><br>
+                        <strong>(4.5 cm x 3.5 cm)</strong>
+                    </div>
+                </td>
+            </tr>
+        </table>
+
+        <!-- Form Main Content -->
+        <table class="form-table">
+            <tr>
+                <td class="col-sr">Sr. No.</td>
+                <td class="section-header">PART A - Personal Information</td>
+            </tr>
+
+            <!-- 1. Name -->
+            <tr>
+                <td class="col-sr">1.</td>
+                <td>
+                    <strong>A. Name</strong>
+                    <table style="width:100%; border-collapse:collapse; margin-top:2px;">
+                        <tr>
+                            <td class="col-label-sub">First Name</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label-sub">Middle Name</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label-sub">Last Name</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="bg-gray" style="padding: 2px 4px; font-weight: bold; margin: 4px 0;">
+                        B. Name <em>(as per Aadhaar)</em>
+                    </div>
+                    <div style="float: right;">
+                        <div class="flex-grid" style="margin-bottom: 2px;">
+                            <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                        </div>
+                        <div class="flex-grid" style="margin-bottom: 2px;">
+                            <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                        </div>
+                        <div class="flex-grid">
+                            <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                        </div>
+                    </div>
+                    <div style="clear: both;"></div>
+                </td>
+            </tr>
+
+            <!-- 2. Gender -->
+            <tr>
+                <td class="col-sr">2.</td>
+                <td>
+                    <strong class="bg-gray">Gender <em>(select one)</em></strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox"> Male &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox"> Female &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox"> Transgender
+                </td>
+            </tr>
+
+            <!-- 3. DOB -->
+            <tr>
+                <td class="col-sr">3.</td>
+                <td>
+                    <strong class="bg-gray">Date of Birth</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="flex-grid" style="vertical-align: middle;">
+                        <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 4. Aadhaar -->
+            <tr>
+                <td class="col-sr">4.</td>
+                <td>
+                    <strong class="bg-gray">Aadhaar Number</strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="flex-grid" style="vertical-align: middle;">
+                        <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 5. Residence Address -->
+            <tr>
+                <td class="col-sr">5.</td>
+                <td>
+                    <strong class="bg-gray">Residence Address</strong>
+                    <table style="width:100%; border-collapse:collapse; margin-top:2px;">
+                        <tr>
+                            <td class="col-label-sub">Flat/Door/Building</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label-sub">Road/Street/Block/Sector</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label-sub">Area/Locality/Town/City</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label-sub">District</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label-sub">State/Union Territory</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                                &nbsp; <strong>Country/Region</strong> &nbsp;
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                                &nbsp; <strong>PIN / ZIP CODE</strong> &nbsp;
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <!-- 6. Office Address -->
+            <tr>
+                <td class="col-sr">6.</td>
+                <td>
+                    <strong class="bg-gray">Office Address</strong>
+                    <table style="width:100%; border-collapse:collapse; margin-top:2px;">
+                        <tr>
+                            <td class="col-label-sub">Flat/Door/Building</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label-sub">Road/Street/Block/Sector</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label-sub">Area/Locality/Town/City</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label-sub">District</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label-sub">State/Union Territory</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                                &nbsp; <strong>Country/Region</strong> &nbsp;
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                                &nbsp; <strong>PIN / ZIP CODE</strong> &nbsp;
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <!-- 7. Residential Status -->
+            <tr>
+                <td class="col-sr">7.</td>
+                <td>
+                    <strong class="bg-gray">Residential Status <em>(select one as applicable)</em></strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox"> Resident &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox"> Non Resident &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox"> Resident but Not ordinarily Resident
+                </td>
+            </tr>
+
+            <!-- 8. Passport Number -->
+            <tr>
+                <td class="col-sr">8.</td>
+                <td>
+                    <strong class="bg-gray">Passport Number <em>(mandatory for (i) Non Resident (ii) Resident but not ordinarily resident)</em></strong>
+                    <div class="flex-grid" style="float: right;">
+                        <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                    </div>
+                    <div style="clear:both;"></div>
+                </td>
+            </tr>
+
+            <!-- 9. TIN -->
+            <tr>
+                <td class="col-sr">9.</td>
+                <td>
+                    <strong class="bg-gray">Taxpayer Identification Number <em>(TIN) in the Country of Residence (if any)</em></strong>
+                    <div class="flex-grid" style="float: right;">
+                        <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                    </div>
+                    <div style="clear:both;"></div>
+                </td>
+            </tr>
+
+            <!-- 10. Contact Details -->
+            <tr>
+                <td class="col-sr">10.</td>
+                <td>
+                    <strong class="bg-gray">Contact Details</strong><br><br>
+                    <div>
+                        <strong>(i) Mobile Number</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                        <strong>Country Code</strong>
+                        <div class="flex-grid" style="margin: 0 10px;">
+                            <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                        </div>
+                        <strong>Mobile Number</strong>
+                        <div class="flex-grid" style="margin-left: 10px;">
+                            <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                        </div>
+                    </div>
+                    <div style="margin-top: 8px;">
+                        <strong>(ii) Email ID</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="email" class="standard-input" style="width: 70%; display: inline-block;">
+                    </div>
+                    <div style="margin-top: 8px;">
+                        <strong>(iii) Landline No. with STD Code <em>(if any)</em></strong> &nbsp;
+                        <strong>STD Code</strong>
+                        <div class="flex-grid" style="margin: 0 10px;">
+                            <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                        </div>
+                        <strong>Landline Number</strong>
+                        <div class="flex-grid" style="margin-left: 10px;">
+                            <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- PART B -->
+            <tr>
+                <td></td>
+                <td class="section-header">PART B- Source of Income</td>
+            </tr>
+            <tr>
+                <td class="col-sr">11.</td>
+                <td>
+                    <strong>Source of Income</strong><br>
+                    <em>(select one or more)</em>
+                    <table style="width:100%; border-collapse:collapse; margin-top:4px;">
+                        <tr>
+                            <td style="border:none; width:33%;"><input type="checkbox"> Salary</td>
+                            <td style="border:none; width:33%;"><input type="checkbox"> Income from Business/Profession</td>
+                            <td style="border:none; width:33%;"><input type="checkbox"> Income from House Property</td>
+                        </tr>
+                        <tr>
+                            <td style="border:none;"><input type="checkbox"> Capital Gains</td>
+                            <td style="border:none;"><input type="checkbox"> Income from Other Sources</td>
+                            <td style="border:none;"><input type="checkbox"> No Income</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <!-- PART C -->
+            <tr>
+                <td></td>
+                <td class="section-header">PART C - Details of Parents</td>
+            </tr>
+            <tr>
+                <td class="col-sr">12.</td>
+                <td>
+                    <strong class="bg-gray">Whether mother/father is a single parent? <em>(select one)</em></strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox"> Yes &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox"> No
+                </td>
+            </tr>
+            <tr>
+                <td class="col-sr">13.</td>
+                <td>
+                    <table style="width:100%; border-collapse:collapse;">
+                        <tr>
+                            <td class="col-label-sub bg-gray">Father's First Name</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label-sub bg-gray">Father's Middle Name</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label-sub bg-gray">Father's Last Name</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+    <div class="inner-border">
+        <table class="form-table">
+            <!-- 14. Mother Name -->
+            <tr>
+                <td class="col-sr">14.</td>
+                <td>
+                    <table style="width:100%; border-collapse:collapse;">
+                        <tr>
+                            <td class="col-label-sub bg-gray">Mother's First Name</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label-sub bg-gray">Mother's Middle Name</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label-sub bg-gray">Mother's Last Name</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <!-- 15. Printed Parent -->
+            <tr>
+                <td class="col-sr">15.</td>
+                <td>
+                    <strong class="bg-gray">Name of parent to be printed on Permanent Account Number card <em>(select one)</em></strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox"> Father &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox"> Mother
+                </td>
+            </tr>
+
+            <!-- PART D -->
+            <tr>
+                <td></td>
+                <td class="section-header">PART D - Assessing Officer (AO Code)</td>
+            </tr>
+            <tr>
+                <td class="col-sr">16.</td>
+                <td>
+                    <table style="width:100%; border-collapse:collapse;">
+                        <tr>
+                            <td style="border:none;" class="bg-gray"><strong>Assessing Officer (AO Code)</strong></td>
+                            <td style="border:none;">
+                                (i) Area Code
+                                <div class="flex-grid" style="margin-left: 5px;">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                            <td style="border:none;">
+                                (ii) AO Type
+                                <div class="flex-grid" style="margin-left: 5px;">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="border:none;"></td>
+                            <td style="border:none;">
+                                (iii) Range Code
+                                <div class="flex-grid" style="margin-left: 5px;">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                            <td style="border:none;">
+                                (iv) AO No.
+                                <div class="flex-grid" style="margin-left: 5px;">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <!-- PART E -->
+            <tr>
+                <td></td>
+                <td class="section-header">PART E- Representative Assessee, if applicable</td>
+            </tr>
+            <tr>
+                <td class="col-sr">17.</td>
+                <td>
+                    <table style="width:100%; border-collapse:collapse;">
+                        <tr>
+                            <td class="col-label-sub bg-gray">RA's First Name</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label-sub bg-gray">RA's Middle Name</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label-sub bg-gray">RA's Last Name</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-sr">18.</td>
+                <td>
+                    <strong class="bg-gray">Permanent Account Number <em>(if any)</em></strong>
+                    <div class="flex-grid" style="margin-left: 10px;">
+                        <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-sr">19.</td>
+                <td>
+                    <strong class="bg-gray">Aadhaar Number <em>(if Permanent Account Number is not available)</em></strong>
+                    <div class="flex-grid" style="margin-left: 10px;">
+                        <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                    </div>
+                </td>
+            </tr>
+
+            <!-- 20. Representative Assessee Address -->
+            <tr>
+                <td class="col-sr">20.</td>
+                <td>
+                    <strong class="bg-gray">Representative Assessee Address</strong>
+                    <table style="width:100%; border-collapse:collapse; margin-top:2px;">
+                        <tr>
+                            <td class="col-label-sub">Flat/Door/Building</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label-sub">Road/Street/Block/Sector</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label-sub">Area/Locality/Town/City</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label-sub">District</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="col-label-sub">State/Union Territory</td>
+                            <td>
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                                &nbsp; <strong>Country/Region</strong> &nbsp;
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                                &nbsp; <strong>PIN / ZIP CODE</strong> &nbsp;
+                                <div class="flex-grid">
+                                    <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <!-- 21. Contact Details -->
+            <tr>
+                <td class="col-sr">21.</td>
+                <td>
+                    <strong class="bg-gray">Contact Details</strong><br><br>
+                    <div>
+                        <strong>(i) Mobile Number</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                        <strong>Country Code</strong>
+                        <div class="flex-grid" style="margin: 0 10px;">
+                            <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                        </div>
+                        <strong>Mobile Number</strong>
+                        <div class="flex-grid" style="margin-left: 10px;">
+                            <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                        </div>
+                    </div>
+                    <div style="margin-top: 8px;">
+                        <strong>(ii) Email ID</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input type="email" class="standard-input" style="width: 70%; display: inline-block;">
+                    </div>
+                    <div style="margin-top: 8px;">
+                        <strong>(iii) Landline No. with STD Code <em>(if any)</em></strong> &nbsp;
+                        <strong>STD Code</strong>
+                        <div class="flex-grid" style="margin: 0 10px;">
+                            <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                        </div>
+                        <strong>Landline Number</strong>
+                        <div class="flex-grid" style="margin-left: 10px;">
+                            <input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1"><input type="text" class="char-input" maxlength="1">
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <!-- PART F -->
+            <tr>
+                <td></td>
+                <td class="section-header">Part F: Communication Address</td>
+            </tr>
+            <tr>
+                <td class="col-sr">22.</td>
+                <td>
+                    <strong>Address for Communication <em>(select one)</em></strong> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox"> Residence Address &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox"> Representative Assessee Address &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox"> Office Address
+                </td>
+            </tr>
+
+            <!-- PART G -->
+            <tr>
+                <td></td>
+                <td class="section-header">Part G: Declaration by Applicant or by Representative Assessee on behalf of the Applicant</td>
+            </tr>
+            <tr>
+                <td class="col-sr">23.</td>
+                <td>
+                    <strong class="bg-gray">Documents submitted as Proof of Identity, Proof of Address and Proof of Date of Birth of the Applicant</strong><br><br>
+                    <input type="checkbox"> (i) Proof of Identity &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox"> (ii) Proof of Address &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox"> (iii) Proof of Date of Birth
+                </td>
+            </tr>
+            <tr>
+                <td class="col-sr">24.</td>
+                <td>
+                    <strong class="bg-gray">Documents submitted as Proof of Identity, Proof of Address of Representative Assessee</strong><br><br>
+                    <input type="checkbox"> (i) Proof of Identity &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="checkbox"> (ii) Proof of Address
+                </td>
+            </tr>
+        </table>
+
+        <!-- Verification Box -->
+        <div class="dec-box">
+            <div class="dec-title">Verification & Declaration</div>
+            
+            <p style="font-size:11px; line-height: 2;">
+                a. I, <input type="text" class="standard-input" style="width:250px; display:inline-block;">, in the capacity of <input type="text" class="standard-input" style="width:180px; display:inline-block;"> (Representative Assessee/ Authorized Representative) do hereby declare that what is stated above is true to the best of my knowledge and belief.<br>
+                b. I declare that the applicant does not possess Permanent Account Number and shall be liable for legal consequences under Income-Tax Act, 2025 if this declaration is found to be incorrect
+            </p>
+
+            <br>
+            <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+                <div style="font-size:11px; line-height: 2.2;">
+                    Place <input type="text" class="standard-input" style="width:180px; display:inline-block;"><br>
+                    Date <input type="text" class="standard-input" style="width:180px; display:inline-block;">
+                </div>
+
+                <div>
+                    <div class="signature-box"></div>
+                    <div class="sig-label">(Signature /Left Hand Thumb Impression of Applicant or Representative Assessee or Authorized Representative)</div>
+                    <div style="font-size: 11px; margin-top: 8px;">
+                        Name: <input type="text" class="standard-input" style="width: 190px; display: inline-block;"><br>
+                        Designation: <input type="text" class="standard-input" style="width: 165px; display: inline-block; margin-top: 4px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // SETTINGS FOR USER ID & PASSWORD
+    const SET_USER_ID = "suryapet";
+    const SET_PASSWORD = "suryapet2006";
+
+    function checkCredentials() {
+        const userIn = document.getElementById('username').value;
+        const passIn = document.getElementById('password').value;
+        const errorMsg = document.getElementById('error-msg');
+
+        if (userIn === SET_USER_ID && passIn === SET_PASSWORD) {
+            document.getElementById('login-overlay').style.display = 'none';
+        } else {
+            errorMsg.style.display = 'block';
+        }
+    }
+
+    // Auto-advance focus to next box on typing
+    document.addEventListener('input', function (e) {
+        if (e.target.classList.contains('char-input')) {
+            if (e.target.value.length >= e.target.maxLength) {
+                let next = e.target.nextElementSibling;
+                while (next) {
+                    if (next.classList.contains('char-input')) {
+                        next.focus();
+                        break;
+                    }
+                    next = next.nextElementSibling;
+                }
+            }
+        }
+    });
+
+    // Move back to previous box on backspace
+    document.addEventListener('keydown', function (e) {
+        if (e.target.classList.contains('char-input') && e.key === 'Backspace' && e.target.value === '') {
+            let prev = e.target.previousElementSibling;
+            while (prev) {
+                if (prev.classList.contains('char-input')) {
+                    prev.focus();
+                    break;
+                }
+                prev = prev.previousElementSibling;
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

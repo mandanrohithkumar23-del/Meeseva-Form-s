@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Application for Birth Certificate</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        body {
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .controls {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            background: #ffffff;
+            padding: 12px 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 15mm 15mm;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.15);
+            position: relative;
+            font-size: 11px;
+            color: #000;
+        }
+        h2 {
+            text-align: center;
+            margin: 0 0 2px 0;
+            font-size: 16px;
+            letter-spacing: 0.5px;
+        }
+        .sub-header {
+            text-align: center;
+            font-size: 11px;
+            margin-bottom: 15px;
+        }
+        .field-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .label {
+            font-weight: bold;
+            font-size: 11px;
+            color: #000;
+        }
+        .char-boxes {
+            display: flex;
+            gap: 0;
+        }
+        .char-box {
+            width: 16px;
+            height: 20px;
+            border: 1px solid #000;
+            border-right: none;
+            text-align: center;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            outline: none;
+            background: transparent;
+            padding: 0;
+            color: #00008b;
+        }
+        .char-boxes .char-box:last-child {
+            border-right: 1px solid #000;
+        }
+        .group-space {
+            margin-right: 8px;
+        }
+        .sub-text {
+            font-size: 10px;
+            margin-left: 20px;
+            margin-bottom: 3px;
+        }
+        .section-header {
+            text-align: center;
+            font-weight: bold;
+            font-size: 12px;
+            margin: 12px 0 8px 0;
+            letter-spacing: 0.5px;
+        }
+        .footer-note {
+            font-size: 8px;
+            text-align: center;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .signature-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 15px;
+        }
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .controls {
+                display: none !important;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                height: auto;
+                padding: 10mm 10mm;
+            }
+            .char-box {
+                color: #000;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <button class="btn" onclick="toggleLanguage()">Switch Language (English / Telugu)</button>
+        <button class="btn" onclick="window.print()">Print Form</button>
+    </div>
+
+    <div class="page">
+        <h2>
+            <span class="lang-en">APPLICATION FOR BIRTH CERTIFICATE</span>
+            <span class="lang-te" style="display:none;">జనన ధృవీకరణ పత్రం కోసం దరఖాస్తు</span>
+        </h2>
+        <div class="sub-header">
+            <span class="lang-en">(Write in capital Letters)</span>
+            <span class="lang-te" style="display:none;">(పెద్ద అక్షరాల్లో రాయండి)</span>
+        </div>
+
+        <!-- Circle / Locality -->
+        <div class="field-row" style="margin-bottom: 12px;">
+            <div class="label" style="width: 180px;">
+                <span class="lang-en">CIRCLE / LOCALITY :</span>
+                <span class="lang-te" style="display:none;">సర్కిల్ / ప్రాంతం :</span>
+            </div>
+            <div class="char-boxes" data-length="8" data-default="SURYAPET"></div>
+        </div>
+
+        <!-- 1. Date of Birth -->
+        <div class="field-row" style="align-items: flex-start; margin-bottom: 10px;">
+            <div class="label" style="width: 180px;">
+                <span class="lang-en">1. Date Of Birth :</span>
+                <span class="lang-te" style="display:none;">1. పుట్టిన తేదీ :</span>
+            </div>
+            <div>
+                <div style="display: flex; font-size: 9px; text-align: center; margin-bottom: 2px;">
+                    <span style="width: 32px;">D D</span>
+                    <span style="width: 16px;"></span>
+                    <span style="width: 32px;">M M</span>
+                    <span style="width: 16px;"></span>
+                    <span style="width: 64px;">Y Y Y Y</span>
+                </div>
+                <div style="display: flex;">
+                    <div class="char-boxes group-space" data-length="2"></div>
+                    <div class="char-boxes group-space" data-length="2"></div>
+                    <div class="char-boxes" data-length="4"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Sex -->
+        <div class="field-row">
+            <div class="label" style="width: 180px;">
+                <span class="lang-en">2. Sex : (F/M)</span>
+                <span class="lang-te" style="display:none;">2. లింగం : (స్త్రీ/పురుషుడు)</span>
+            </div>
+            <div class="char-boxes" data-length="6"></div>
+        </div>
+
+        <!-- 3. Child Surname -->
+        <div class="field-row">
+            <div class="label" style="width: 180px;">
+                <span class="lang-en">3. Child Surname :</span>
+                <span class="lang-te" style="display:none;">3. పిల్లల ఇంటిపేరు :</span>
+            </div>
+            <div class="char-boxes" data-length="22"></div>
+        </div>
+
+        <!-- Child Name -->
+        <div class="field-row" style="margin-bottom: 2px;">
+            <div class="label" style="width: 180px; padding-left: 12px;">
+                <span class="lang-en">Child Name :</span>
+                <span class="lang-te" style="display:none;">పిల్లల పేరు :</span>
+            </div>
+            <div class="char-boxes" data-length="22"></div>
+        </div>
+        <div class="sub-text">
+            <span class="lang-en">a) If Registered Mention the Child Name.</span>
+            <span class="lang-te" style="display:none;">a) నమోదు చేయబడి ఉంటే పిల్లల పేరు పేర్కొనండి.</span>
+        </div>
+        <div class="sub-text" style="margin-bottom: 8px;">
+            <span class="lang-en">b) If Child Name not included a separate form to be filled by the Father and Mother of the Child.</span>
+            <span class="lang-te" style="display:none;">b) పిల్లల పేరు చేర్చకపోతే తండ్రి మరియు తల్లి ద్వారా ప్రత్యేక ఫారం నింపాలి.</span>
+        </div>
+
+        <!-- 5. Father Surname -->
+        <div class="field-row">
+            <div class="label" style="width: 180px;">
+                <span class="lang-en">5. Father Surname :</span>
+                <span class="lang-te" style="display:none;">5. తండ్రి ఇంటిపేరు :</span>
+            </div>
+            <div class="char-boxes" data-length="22"></div>
+        </div>
+
+        <!-- Name of the Father -->
+        <div class="field-row">
+            <div class="label" style="width: 180px; padding-left: 12px;">
+                <span class="lang-en">Name of the Father :</span>
+                <span class="lang-te" style="display:none;">తండ్రి పేరు :</span>
+            </div>
+            <div class="char-boxes" data-length="22"></div>
+        </div>
+
+        <!-- Father Aadhar No -->
+        <div class="field-row">
+            <div class="label" style="width: 180px; padding-left: 12px;">
+                <span class="lang-en">Father Aadhar No :</span>
+                <span class="lang-te" style="display:none;">తండ్రి ఆధార్ సంఖ్య :</span>
+            </div>
+            <div style="display: flex;">
+                <div class="char-boxes group-space" data-length="4"></div>
+                <div class="char-boxes group-space" data-length="4"></div>
+                <div class="char-boxes" data-length="4"></div>
+            </div>
+        </div>
+
+        <!-- 6. Mother Surname -->
+        <div class="field-row">
+            <div class="label" style="width: 180px;">
+                <span class="lang-en">6. Mother Surname :</span>
+                <span class="lang-te" style="display:none;">6. తల్లి ఇంటిపేరు :</span>
+            </div>
+            <div class="char-boxes" data-length="22"></div>
+        </div>
+
+        <!-- Name of the Mother -->
+        <div class="field-row">
+            <div class="label" style="width: 180px; padding-left: 12px;">
+                <span class="lang-en">Name of the Mother :</span>
+                <span class="lang-te" style="display:none;">తల్లి పేరు :</span>
+            </div>
+            <div class="char-boxes" data-length="22"></div>
+        </div>
+
+        <!-- Mother Aadhar No -->
+        <div class="field-row">
+            <div class="label" style="width: 180px; padding-left: 12px;">
+                <span class="lang-en">Mother Aadhar No :</span>
+                <span class="lang-te" style="display:none;">తల్లి ఆధార్ సంఖ్య :</span>
+            </div>
+            <div style="display: flex;">
+                <div class="char-boxes group-space" data-length="4"></div>
+                <div class="char-boxes group-space" data-length="4"></div>
+                <div class="char-boxes" data-length="4"></div>
+            </div>
+        </div>
+
+        <!-- 7. Place of the Child Birth -->
+        <div class="field-row">
+            <div class="label" style="width: 180px;">
+                <span class="lang-en">7. Place of the Child Birth :</span>
+                <span class="lang-te" style="display:none;">7. ప్రసవం జరిగిన స్థలం :</span>
+            </div>
+            <div class="char-boxes" data-length="22"></div>
+        </div>
+
+        <!-- 8. Hospital Name -->
+        <div class="field-row">
+            <div class="label" style="width: 180px;">
+                <span class="lang-en">8. Hospital Name :</span>
+                <span class="lang-te" style="display:none;">8. ఆసుపత్రి పేరు :</span>
+            </div>
+            <div class="char-boxes" data-length="22"></div>
+        </div>
+
+        <div class="sub-text" style="margin-left: 15px; margin-bottom: 10px;">
+            <span class="lang-en">(Tick the appropriate entry a,b,c below and give the name of the Hospital/institute of the address of the House where the birth took place. If other place give location.</span>
+            <span class="lang-te" style="display:none;">(క్రింద తగిన ఎంట్రీని టిక్ చేసి, ప్రసవం జరిగిన ఆసుపత్రి/సంస్థ పేరు లేదా ఇంటి చిరునామా ఇవ్వండి. వేరే స్థలమైతే వివరాలు ఇవ్వండి.</span>
+        </div>
+
+        <div class="section-header">
+            <span class="lang-en">HOUSE ADDRESS</span>
+            <span class="lang-te" style="display:none;">ఇంటి చిరునామా</span>
+        </div>
+
+        <!-- 9. i) H.No -->
+        <div class="field-row">
+            <div class="label" style="width: 180px;">
+                <span style="display: inline-block; width: 25px;">9.</span>
+                <span class="lang-en">i) H.No :</span>
+                <span class="lang-te" style="display:none;">i) ఇంటి నంబర్ :</span>
+            </div>
+            <div class="char-boxes" data-length="22"></div>
+        </div>
+
+        <!-- ii) Locality/Land Mark -->
+        <div class="field-row">
+            <div class="label" style="width: 180px; padding-left: 25px;">
+                <span class="lang-en">ii) Locality/Land Mark :</span>
+                <span class="lang-te" style="display:none;">ii) ప్రాంతం / గురుతు :</span>
+            </div>
+            <div class="char-boxes" data-length="22"></div>
+        </div>
+
+        <!-- iii) Village -->
+        <div class="field-row">
+            <div class="label" style="width: 180px; padding-left: 25px;">
+                <span class="lang-en">iii) Village :</span>
+                <span class="lang-te" style="display:none;">iii) గ్రామం :</span>
+            </div>
+            <div class="char-boxes" data-length="22"></div>
+        </div>
+
+        <!-- iv) Mandal -->
+        <div class="field-row">
+            <div class="label" style="width: 180px; padding-left: 25px;">
+                <span class="lang-en">iv) Mandal :</span>
+                <span class="lang-te" style="display:none;">iv) మండలం :</span>
+            </div>
+            <div class="char-boxes" data-length="22"></div>
+        </div>
+
+        <!-- v) District -->
+        <div class="field-row">
+            <div class="label" style="width: 180px; padding-left: 25px;">
+                <span class="lang-en">v) District :</span>
+                <span class="lang-te" style="display:none;">v) జిల్లా :</span>
+            </div>
+            <div class="char-boxes" data-length="22"></div>
+        </div>
+
+        <!-- 10. Courier details -->
+        <div class="sub-text" style="margin-left: 0; margin-top: 8px;">
+            <span class="lang-en">10. a) Do you want the Birth certificate by Courier Yes/No :</span>
+            <span class="lang-te" style="display:none;">10. a) మీకు జనన ధృవీకరణ పత్రం కొరియర్ ద్వారా కావాలా అవును/కాదు :</span>
+        </div>
+        <div class="sub-text" style="margin-left: 20px; margin-bottom: 12px;">
+            <span class="lang-en">b) If Yes give Name and Address with Pincode :</span>
+            <span class="lang-te" style="display:none;">b) అవును అయితే పిన్‌కోడ్‌తో పేరు మరియు చిరునామా ఇవ్వండి :</span>
+        </div>
+
+        <!-- Cell No & Signature -->
+        <div class="signature-container">
+            <div class="field-row" style="margin-bottom: 0;">
+                <div class="label" style="margin-right: 10px; font-size: 13px;">
+                    <span class="lang-en">Cell No : &nbsp;&nbsp;&nbsp;&nbsp; +91</span>
+                    <span class="lang-te" style="display:none;">ఫోన్ నెం : &nbsp;&nbsp;&nbsp;&nbsp; +91</span>
+                </div>
+                <div class="char-boxes" data-length="10"></div>
+            </div>
+            <div class="label" style="font-size: 11px;">
+                <span class="lang-en">(Signature of the Applicant)</span>
+                <span class="lang-te" style="display:none;">(దరఖాస్తుదారుని సంతకం)</span>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            <span class="lang-en">Note: Birth Certificate will be issued subject to entry found registered in BIRTH RECORDS - C & DMA.</span>
+            <span class="lang-te" style="display:none;">గమనిక: జనన రికార్డులు - C & DMA లో నమోదు చేయబడిన ఎంట్రీకి లోబడి జనన ధృవీకరణ పత్రం జారీ చేయబడుతుంది.</span>
+        </div>
+    </div>
+
+    <script>
+        // Generate character boxes dynamically
+        document.querySelectorAll('.char-boxes').forEach(container => {
+            const length = parseInt(container.getAttribute('data-length'));
+            const defaultValue = container.getAttribute('data-default') || '';
+            
+            for (let i = 0; i < length; i++) {
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.maxLength = 1;
+                input.className = 'char-box';
+                if (defaultValue[i]) {
+                    input.value = defaultValue[i];
+                }
+                
+                // Auto Tab functionality
+                input.addEventListener('input', (e) => {
+                    if (e.target.value.length === 1) {
+                        const next = e.target.nextElementSibling;
+                        if (next && next.classList.contains('char-box')) {
+                            next.focus();
+                        } else {
+                            // Try finding next box in next group if any
+                            const parent = e.target.parentElement;
+                            if (parent.nextElementSibling && parent.nextElementSibling.classList.contains('char-boxes')) {
+                                const firstBox = parent.nextElementSibling.querySelector('.char-box');
+                                if (firstBox) firstBox.focus();
+                            }
+                        }
+                    }
+                });
+
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Backspace' && e.target.value === '') {
+                        const prev = e.target.previousElementSibling;
+                        if (prev && prev.classList.contains('char-box')) {
+                            prev.focus();
+                        } else {
+                            const parent = e.target.parentElement;
+                            if (parent.previousElementSibling && parent.previousElementSibling.classList.contains('char-boxes')) {
+                                const boxes = parent.previousElementSibling.querySelectorAll('.char-box');
+                                if (boxes.length) boxes[boxes.length - 1].focus();
+                            }
+                        }
+                    }
+                });
+
+                container.appendChild(input);
+            }
+        });
+
+        let currentLang = 'en';
+        function toggleLanguage() {
+            const enElements = document.querySelectorAll('.lang-en');
+            const teElements = document.querySelectorAll('.lang-te');
+
+            if (currentLang === 'en') {
+                enElements.forEach(el => el.style.display = 'none');
+                teElements.forEach(el => el.style.display = 'inline');
+                currentLang = 'te';
+            } else {
+                teElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => el.style.display = 'inline');
+                currentLang = 'en';
+            }
+        }
+    </script>
+</body>
+</html>

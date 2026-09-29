@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CDMA Death Corrections Application Form</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm 15mm;
+    }
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    body {
+      margin: 0;
+      padding: 15px;
+      background-color: #525659;
+      display: flex;
+      justify-content: center;
+    }
+    .page-sheet {
+      background: #ffffff;
+      width: 210mm;
+      min-height: 297mm;
+      padding: 12mm 15mm;
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      font-size: 11px;
+      line-height: 1.25;
+      color: #000;
+    }
+
+    /* Header */
+    .header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+    .brand-telugu {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    .price-tag {
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .form-main-heading {
+      text-align: center;
+      font-size: 13px;
+      font-weight: bold;
+      text-decoration: underline;
+      margin: 4px 0 10px 0;
+    }
+
+    /* Section Headings */
+    .section-title {
+      font-weight: bold;
+      font-size: 11.5px;
+      margin-top: 6px;
+      margin-bottom: 4px;
+    }
+
+    /* Form Rows & Inputs */
+    .row {
+      display: flex;
+      align-items: center;
+      margin-bottom: 3px;
+    }
+    .editable-line {
+      border: none;
+      border-bottom: 1px dotted #333;
+      background: transparent;
+      outline: none;
+      font-size: 11px;
+      padding: 0 4px;
+      flex-grow: 1;
+      height: 16px;
+    }
+    .editable-line:focus {
+      border-bottom: 1px solid #000;
+      background-color: #f7faff;
+    }
+
+    /* Custom Checkbox mimicking PDF square boxes */
+    .pdf-check {
+      display: inline-flex;
+      align-items: center;
+      margin-right: 12px;
+      font-size: 11px;
+      cursor: pointer;
+      user-select: none;
+    }
+    .pdf-check input[type="checkbox"],
+    .pdf-check input[type="radio"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 10px;
+      height: 10px;
+      border: 1px solid #000;
+      margin: 0 4px 0 0;
+      outline: none;
+      display: grid;
+      place-content: center;
+      cursor: pointer;
+      background: #fff;
+    }
+    .pdf-check input[type="checkbox"]:checked::before,
+    .pdf-check input[type="radio"]:checked::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      background-color: #000;
+    }
+
+    /* Document List & Note */
+    .doc-ordered-list {
+      margin: 2px 0 6px 0;
+      padding-left: 16px;
+      font-size: 10.5px;
+      line-height: 1.25;
+    }
+    .doc-ordered-list li {
+      margin-bottom: 2px;
+    }
+    .footer-note {
+      font-size: 10px;
+      font-weight: bold;
+      margin-top: 4px;
+    }
+
+    /* Signatures & Bottom */
+    .sig-container {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 10px;
+      margin-bottom: 8px;
+    }
+    .sig-box {
+      text-align: center;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    /* Toolbar for Preview / Printing */
+    .no-print-bar {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: rgba(0,0,0,0.8);
+      padding: 8px 12px;
+      border-radius: 6px;
+      display: flex;
+      gap: 10px;
+      z-index: 1000;
+    }
+    .no-print-bar button {
+      padding: 6px 14px;
+      font-size: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      border-radius: 3px;
+      background: #005a9e;
+      color: #fff;
+    }
+    .no-print-bar button:hover {
+      background: #0078d4;
+    }
+
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+      }
+      .page-sheet {
+        box-shadow: none;
+        width: 100%;
+        min-height: auto;
+        padding: 0;
+      }
+      .no-print-bar {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="no-print-bar">
+  <button type="button" onclick="window.print()">Print / Save PDF</button>
+  <button type="button" onclick="document.getElementById('correctionForm').reset()" style="background:#666;">Clear All</button>
+</div>
+
+<div class="page-sheet">
+  <form id="correctionForm">
+
+    <!-- Top Header -->
+    <div class="header-row">
+      <span class="brand-telugu">మీ సేవ</span>
+      <span class="price-tag">Price: 1</span>
+    </div>
+
+    <div class="form-main-heading">CDMA Death Corrections Application Form</div>
+
+    <!-- Death Details -->
+    <div class="section-title">Death Details:-</div>
+
+    <div class="row">
+      <span style="width: 55px;">District:</span>
+      <input type="text" class="editable-line" />
+      <span style="margin-left: 20px; width: 140px;">Registration Number:</span>
+      <input type="text" class="editable-line" />
+    </div>
+
+    <div class="row">
+      <span style="width: 130px;">Registration Unit Id:</span>
+      <input type="text" class="editable-line" />
+      <span style="margin-left: 20px; width: 110px;">Registration Year:</span>
+      <input type="text" class="editable-line" />
+      <span style="margin-left: 20px; width: 75px;">Death Year:</span>
+      <input type="text" class="editable-line" />
+    </div>
+
+    <div class="row" style="margin-top: 2px;">
+      <span style="width: 60px;">Location:</span>
+      <label class="pdf-check"><input type="radio" name="loc" /> Greater Municipality</label>
+      <label class="pdf-check"><input type="radio" name="loc" /> Municipality</label>
+      <label class="pdf-check"><input type="radio" name="loc" /> Municipal Corporation</label>
+      <label class="pdf-check"><input type="radio" name="loc" /> Gram Panchayat</label>
+    </div>
+
+    <div class="row">
+      <span style="width: 55px;">Gender:</span>
+      <label class="pdf-check"><input type="radio" name="genderBase" /> Male</label>
+      <label class="pdf-check"><input type="radio" name="genderBase" /> Female</label>
+    </div>
+
+    <!-- Corrections Required in Death Certificate Details -->
+    <div class="section-title">Corrections Required in Death Certificate Details:-</div>
+
+    <div class="row">
+      <span>Whether You Want to Update Deceased Name:</span>
+      <label class="pdf-check" style="margin-left: 10px;"><input type="radio" name="updDecName" /> Yes</label>
+      <label class="pdf-check"><input type="radio" name="updDecName" /> No</label>
+    </div>
+
+    <div class="row">
+      <span style="width: 170px;">Changed Deceased Surname:</span>
+      <input type="text" class="editable-line" />
+      <span style="margin-left: 15px; width: 150px;">Changed Deceased Name:</span>
+      <input type="text" class="editable-line" />
+    </div>
+
+    <div class="row">
+      <span>Whether You Want to Update Date of Death:</span>
+      <label class="pdf-check" style="margin-left: 10px;"><input type="radio" name="updDod" /> Yes</label>
+      <label class="pdf-check"><input type="radio" name="updDod" /> No</label>
+      <span style="margin-left: 25px; width: 135px;">Changed Date of Death:</span>
+      <input type="text" class="editable-line" />
+    </div>
+
+    <div class="row">
+      <span>Whether You Want to Update Gender:</span>
+      <label class="pdf-check" style="margin-left: 10px;"><input type="radio" name="updGen" /> Yes</label>
+      <label class="pdf-check"><input type="radio" name="updGen" /> No</label>
+      <span style="margin-left: 35px;">Changed Gender:</span>
+      <label class="pdf-check" style="margin-left: 10px;"><input type="radio" name="chgGen" /> Male</label>
+      <label class="pdf-check"><input type="radio" name="chgGen" /> Female</label>
+    </div>
+
+    <div class="row">
+      <span>Whether You Want to Update Deceased Father Name:</span>
+      <label class="pdf-check" style="margin-left: 10px;"><input type="radio" name="updFath" /> Yes</label>
+      <label class="pdf-check"><input type="radio" name="updFath" /> No</label>
+    </div>
+
+    <div class="row">
+      <span style="width: 155px;">Changed Father Surname:</span>
+      <input type="text" class="editable-line" />
+      <span style="margin-left: 15px; width: 135px;">Changed Father Name:</span>
+      <input type="text" class="editable-line" />
+    </div>
+
+    <div class="row">
+      <span>Whether You Want to Update Deceased Mother Name:</span>
+      <label class="pdf-check" style="margin-left: 10px;"><input type="radio" name="updMoth" /> Yes</label>
+      <label class="pdf-check"><input type="radio" name="updMoth" /> No</label>
+    </div>
+
+    <div class="row">
+      <span style="width: 160px;">Changed Mother Surname:</span>
+      <input type="text" class="editable-line" />
+      <span style="margin-left: 15px; width: 140px;">Changed Mother Name:</span>
+      <input type="text" class="editable-line" />
+    </div>
+
+    <div class="row">
+      <span>Whether You Want to Update Death Place:</span>
+      <label class="pdf-check" style="margin-left: 10px;"><input type="radio" name="updPlace" /> Yes</label>
+      <label class="pdf-check"><input type="radio" name="updPlace" /> No</label>
+      <span style="margin-left: 25px; width: 130px;">Changed Death Place:</span>
+      <input type="text" class="editable-line" />
+    </div>
+
+    <div class="row">
+      <span>Whether You Want to Update Address at the Time of Death:</span>
+      <label class="pdf-check" style="margin-left: 10px;"><input type="radio" name="updDAddr" /> Yes</label>
+      <label class="pdf-check"><input type="radio" name="updDAddr" /> No</label>
+    </div>
+
+    <div class="row">
+      <span style="width: 285px;">Changed Line 1 of Address at the Time of Death:</span>
+      <input type="text" class="editable-line" />
+    </div>
+    <div class="row">
+      <span style="width: 285px;">Changed Line 2 of Address at the Time of Death:</span>
+      <input type="text" class="editable-line" />
+    </div>
+    <div class="row">
+      <span style="width: 285px;">Changed Line 3 of Address at the Time of Death:</span>
+      <input type="text" class="editable-line" />
+    </div>
+
+    <div class="row">
+      <span>Whether You Want to Update Permanent Address:</span>
+      <label class="pdf-check" style="margin-left: 10px;"><input type="radio" name="updPAddr" /> Yes</label>
+      <label class="pdf-check"><input type="radio" name="updPAddr" /> No</label>
+    </div>
+
+    <div class="row">
+      <span style="width: 235px;">Changed Line 1 of Permanent Address:</span>
+      <input type="text" class="editable-line" />
+    </div>
+    <div class="row">
+      <span style="width: 235px;">Changed Line 2 of Permanent Address:</span>
+      <input type="text" class="editable-line" />
+    </div>
+    <div class="row">
+      <span style="width: 235px;">Changed Line 3 of Permanent Address:</span>
+      <input type="text" class="editable-line" />
+    </div>
+
+    <!-- Informant Details -->
+    <div class="section-title">Informant Details:-</div>
+
+    <div class="row">
+      <span style="width: 105px;">Informant Name:</span>
+      <input type="text" class="editable-line" />
+    </div>
+
+    <div class="row">
+      <span style="width: 115px;">Informant Relation:</span>
+      <label class="pdf-check"><input type="radio" name="rel" /> S/o</label>
+      <label class="pdf-check"><input type="radio" name="rel" /> D/o</label>
+      <label class="pdf-check"><input type="radio" name="rel" /> W/o</label>
+      <label class="pdf-check"><input type="radio" name="rel" /> H/o</label>
+      <label class="pdf-check"><input type="radio" name="rel" /> M/o</label>
+      <label class="pdf-check"><input type="radio" name="rel" /> F/o</label>
+      <label class="pdf-check"><input type="radio" name="rel" /> C/o</label>
+    </div>
+
+    <div class="row">
+      <span style="width: 125px;">Informant Address1:</span>
+      <input type="text" class="editable-line" />
+    </div>
+    <div class="row">
+      <span style="width: 125px;">Informant Address2:</span>
+      <input type="text" class="editable-line" />
+    </div>
+    <div class="row">
+      <span style="width: 125px;">Informant Address3:</span>
+      <input type="text" class="editable-line" />
+    </div>
+
+    <div class="row">
+      <span style="width: 95px;">Mobile Number:</span>
+      <input type="text" class="editable-line" style="max-width: 160px;" />
+      <span style="margin-left: 15px; width: 55px;">Email ID:</span>
+      <input type="text" class="editable-line" />
+      <span style="margin-left: 15px; width: 55px;">Pin code:</span>
+      <input type="text" class="editable-line" style="max-width: 110px;" />
+    </div>
+
+    <div class="row">
+      <span style="width: 60px;">Remarks:</span>
+      <input type="text" class="editable-line" />
+    </div>
+
+    <div class="row">
+      <span style="width: 85px;">Delivery Type:</span>
+      <label class="pdf-check"><input type="radio" name="delType" /> Manual / In Person</label>
+      <label class="pdf-check"><input type="radio" name="delType" /> Post - Local</label>
+      <label class="pdf-check"><input type="radio" name="delType" /> Post - Nonlocal</label>
+    </div>
+
+    <div class="row">
+      <span style="width: 145px;">Purpose of the Certificate</span>
+      <input type="text" class="editable-line" />
+      <span style="margin-left: 15px; width: 75px;">No of copies:</span>
+      <input type="text" class="editable-line" style="max-width: 80px;" />
+    </div>
+
+    <!-- Document List -->
+    <div class="section-title">Document List:-</div>
+    <ol class="doc-ordered-list">
+      <li>Application Form</li>
+      <li>Original Death Certificate issued by the Registrar of Death</li>
+      <li>In case of Medico Legal cases for death events, certificate from the concerned police authority is a must along with FIR and postmortem report</li>
+      <li>Notary Affidavit on Rs.10/- Non-Judicial Stamped paper</li>
+      <li>Available Documentary evidences like educational certificates, Election ID Card, Ration Card, Passport, Driving License and Marriage certificates</li>
+      <li>A letter from the Hospital Authorities where the Death has occurred</li>
+    </ol>
+
+    <div class="footer-note">
+      Note: Please upload Application Form and any one of Above Documents as a single file in pdf format
+    </div>
+
+    <!-- Applicant Signature -->
+    <div class="sig-container">
+      <div class="sig-box">
+        Applicant's Signature
+      </div>
+    </div>
+
+  </form>
+</div>
+
+<script>
+  // Script allows clicking checked radio buttons again to uncheck them like checkboxes
+  document.querySelectorAll('input[type="radio"]').forEach(radio => {
+    radio.addEventListener('click', function() {
+      if (this.previousChecked) {
+        this.checked = false;
+        this.previousChecked = false;
+      } else {
+        document.querySelectorAll(`input[name="${this.name}"]`).forEach(r => r.previousChecked = false);
+        this.previousChecked = true;
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
