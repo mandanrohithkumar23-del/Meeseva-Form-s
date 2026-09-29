@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residence Certificate Application Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, sans-serif;
+        }
+        body {
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .toolbar {
+            width: 210mm;
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+        .lang-btn, .print-btn {
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 4px;
+            border: 1px solid #1a73e8;
+            background: #fff;
+            color: #1a73e8;
+            transition: all 0.2s;
+        }
+        .lang-btn.active, .print-btn {
+            background: #1a73e8;
+            color: white;
+        }
+        .form-container {
+            width: 210mm;
+            min-height: 297mm;
+            background: #ffffff;
+            padding: 18mm 15mm;
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            color: #000;
+            font-size: 13.5px;
+            line-height: 1.8;
+        }
+        .header {
+            text-align: center;
+            position: relative;
+            margin-bottom: 12px;
+        }
+        .logo-title-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        .logo {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            border: 2px solid #0a7e35;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            font-weight: bold;
+            color: #0a7e35;
+            text-align: center;
+        }
+        .meeseva-brand {
+            font-size: 26px;
+            font-weight: 900;
+            color: #0a7e35;
+            line-height: 1.1;
+        }
+        .tagline {
+            font-size: 12px;
+            color: #e65100;
+            font-weight: bold;
+        }
+        .fee-tag {
+            position: absolute;
+            right: 0;
+            top: 0;
+            border: 1px dashed #444;
+            padding: 2px 8px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .main-heading {
+            text-align: center;
+            font-weight: bold;
+            font-size: 16px;
+            text-decoration: underline;
+            margin: 10px 0 16px 0;
+        }
+        .dotted-input {
+            border: none;
+            border-bottom: 1px dotted #000;
+            outline: none;
+            background: transparent;
+            font-size: 13.5px;
+            padding: 0 4px;
+            color: #000;
+            display: inline-block;
+        }
+        .section-title {
+            font-weight: bold;
+            text-decoration: underline;
+            margin-top: 10px;
+            margin-bottom: 4px;
+            font-size: 14px;
+        }
+        .applicant-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin: 14px 0;
+        }
+        .checklist {
+            border: 1px solid #777;
+            padding: 8px 12px;
+            margin: 10px 0;
+            font-size: 12px;
+            line-height: 1.5;
+            background: #fafafa;
+        }
+        .checklist-title {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        .officer-block {
+            margin-top: 8px;
+            border-top: 1px dashed #bbb;
+            padding-top: 8px;
+        }
+        .signatures-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .submission-signatures {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .toolbar {
+                display: none;
+            }
+            .form-container {
+                box-shadow: none;
+                border: none;
+                padding: 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="toolbar">
+        <button class="lang-btn active" id="btn-te" onclick="setLanguage('te')">తెలుగు (Telugu)</button>
+        <button class="lang-btn" id="btn-en" onclick="setLanguage('en')">English</button>
+        <button class="print-btn" onclick="window.print()">Print Form</button>
+    </div>
+
+    <div class="form-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="fee-tag" data-key="fee">వెల: ₹1/-</div>
+            <div class="logo-title-wrap">
+                <div class="logo">GOVT<br>SEAL</div>
+                <div>
+                    <div class="meeseva-brand" data-key="meeseva">మీ సేవ</div>
+                    <div class="tagline" data-key="tagline">సులభంగా, వేగంగా</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-heading" data-key="form_title">నివాస ధృవపత్రము కొరకు దరఖాస్తు</div>
+
+        <!-- Citizen Declaration -->
+        <div style="text-align: justify;">
+            <span data-key="mr_mrs">శ్రీ / శ్రీమతి</span>
+            <input type="text" class="dotted-input" style="width: 200px;">
+            <span data-key="applicant_p1">అనునేను</span>
+            <input type="text" class="dotted-input" style="width: 180px;">
+            <span data-key="applicant_p2">అను వారికి తండ్రి / తల్లి / సంరక్షకుడును అయి ఉన్నాను. నేను</span>
+            <input type="text" class="dotted-input" style="width: 160px;">
+            <span data-key="applicant_p3">మండలంలోని</span>
+            <input type="text" class="dotted-input" style="width: 170px;">
+            <span data-key="applicant_p4">గ్రామములో</span>
+            <input type="text" class="dotted-input" style="width: 110px;">
+            <span data-key="applicant_p5">ఇంటి నెంబరులో</span>
+            <input type="text" class="dotted-input" style="width: 50px;">
+            <span data-key="applicant_p6">సంవత్సరములుగా నివసించుచున్న ఆర్జిదారునైయున్నాను. పై ధృవపత్రము నాకు</span>
+            <input type="text" class="dotted-input" style="width: 210px;">
+            <span data-key="applicant_p7">నిమిత్తం కావలసియున్నది. కావున ఇప్పించకోరుచున్నాను.</span>
+        </div>
+
+        <!-- Signatures & Contact Details -->
+        <div class="applicant-section">
+            <div style="line-height: 1.9;">
+                <div>1. <span data-key="applicant_name">అభ్యర్థి పేరు</span> : <input type="text" class="dotted-input" style="width: 190px;"></div>
+                <div>2. <span data-key="mobile">మొబైల్ ఫోన్ నెం.</span> : <input type="text" class="dotted-input" style="width: 170px;"></div>
+                <div>3. <span data-key="ration_aadhaar">రేషన్ కార్డు / ఆధార్ నెం.</span> : <input type="text" class="dotted-input" style="width: 130px;"></div>
+            </div>
+            <div style="text-align: center;">
+                <div style="height: 35px;"></div>
+                <div data-key="applicant_sig">అభ్యర్థి సంతకం</div>
+                <div style="margin-top: 15px; font-size: 12px;" data-key="guardian_sig">
+                    అభ్యర్థి తల్లి / తండ్రి / సంరక్షకుని సంతకము<br>(అభ్యర్థి మైనర్ అయినచో)
+                </div>
+            </div>
+        </div>
+
+        <!-- Checklist -->
+        <div class="checklist">
+            <div class="checklist-title" data-key="enclosure_title">దరఖాస్తుతో జత పరచవలసినవి :</div>
+            <div>1. <span data-key="enc1">అప్లికేషన్ ఫారమ్ *</span></div>
+            <div>2. <span data-key="enc2">రేషన్ కార్డు / ఆధార్ నెం / ఓటరు గుర్తింపు కార్డు #</span></div>
+            <div>3. <span data-key="enc3">ఇంటిపన్ను రశీదు / కరెంటు బిల్లు / టెలిఫోను బిల్లు నకలు #</span></div>
+            <div style="font-size: 11px; margin-top: 4px; color: #555;" data-key="enc_note">(* - ఖచ్చితముగా జతపరచవలెను, # - ఏదో ఒకటి ఖచ్చితముగా జత చేయవలెను)</div>
+        </div>
+
+        <!-- VRO Report -->
+        <div class="officer-block">
+            <div class="section-title" data-key="vro_title">గ్రామ రెవెన్యూ అధికారి నివేదిక</div>
+            <div>
+                <span data-key="salutation">శ్రీ / శ్రీమతి / కుమారి / కుమారుడు</span>
+                <input type="text" class="dotted-input" style="width: 220px;">
+                <span data-key="father_husband">తండ్రి / భర్త</span>
+                <input type="text" class="dotted-input" style="width: 200px;">
+                <span data-key="vro_p1">గారు రేషన్ కార్డు / ఆధార్ కార్డు / ఓటరు కార్డు / అఫిడవిట్ ప్రకారం</span>
+                <input type="text" class="dotted-input" style="width: 150px;">
+                <span data-key="vro_p2">గ్రామములో నివసిస్తున్నారు. వీరి దరఖాస్తు పై గ్రామములో విచారణ చేయగా ధృవ పత్రము పొందే వ్యక్తి గత</span>
+                <input type="text" class="dotted-input" style="width: 50px;">
+                <span data-key="vro_p3">సంవత్సరముల నుంచి అనగా</span>
+                <input type="text" class="dotted-input" style="width: 70px;">
+                <span data-key="vro_p4">సం నుంచి నేటి వరకు</span>
+                <input type="text" class="dotted-input" style="width: 150px;">
+                <span data-key="vro_p5">గ్రామములో నివసిస్తున్నారు అని ధృవీకరించనైనది.</span>
+            </div>
+            <div class="signatures-row">
+                <div><span data-key="village">గ్రామము</span>: <input type="text" class="dotted-input" style="width: 140px;"></div>
+                <div data-key="vro_sig">గ్రామ రెవెన్యూ అధికారి</div>
+            </div>
+        </div>
+
+        <!-- MRI Report -->
+        <div class="officer-block">
+            <div class="section-title" data-key="mri_title">మండల రెవెన్యూ ఇన్స్పెక్టర్ నివేదిక</div>
+            <div>
+                <span data-key="mri_p1">గ్రామములో విచారణ మరియు దరఖాస్తుదారుడు సమర్పించిన ధృవపత్రముల ఆధారంగా దరఖాస్తుదారుడు గత</span>
+                <input type="text" class="dotted-input" style="width: 50px;">
+                <span data-key="mri_p2">సంవత్సరముల నుంచి అనగా</span>
+                <input type="text" class="dotted-input" style="width: 70px;">
+                <span data-key="mri_p3">సంవత్సరము నుంచి నేటి వరకు</span>
+                <input type="text" class="dotted-input" style="width: 160px;">
+                <span data-key="mri_p4">గ్రామములో నివసిస్తున్నారు అని ధృవీకరించనైనది.</span>
+            </div>
+            <div style="text-align: right; margin-top: 25px; font-weight: bold;">
+                <div data-key="mri_sig">మండల రెవెన్యూ ఇన్స్పెక్టర్</div>
+                <div><input type="text" class="dotted-input" style="width: 160px; text-align: right;" value="సూర్యాపేట మండలం"></div>
+            </div>
+        </div>
+
+        <!-- Submission / Final Endorsement -->
+        <div class="officer-block">
+            <div class="section-title" data-key="sub_title">సమర్పణ:</div>
+            <div>
+                <span data-key="sub_p1">గ్రామ రెవెన్యూ అధికారి మరియు మండల రెవెన్యూ ఇన్స్పెక్టర్ గార్ల విచారణ నివేదిక మరియు దరఖాస్తుదారు సమర్పించిన ధృవ పత్రములు పరిశీలించగా సర్టిఫికేట్ పొందే వ్యక్తి గత</span>
+                <input type="text" class="dotted-input" style="width: 50px;">
+                <span data-key="sub_p2">సంవత్సరముల నుంచి అనగా</span>
+                <input type="text" class="dotted-input" style="width: 70px;">
+                <span data-key="sub_p3">సం నుంచి నేటి వరకు</span>
+                <input type="text" class="dotted-input" style="width: 160px;">
+                <span data-key="sub_p4">గ్రామములో నివసిస్తున్నారు అని తెలియుచున్నది.</span>
+            </div>
+            <div style="margin-top: 6px;" data-key="sub_p5">
+                కావున నివాస ధృవ పత్రము జారీకి తమరి పరిశీలనకు, ఆమోదమునకు మరియు ఇట్టి ఫైలును యల్.డిస్స్ నందు ముగించుటకు తమరి అనుమతికై సమర్పించనైనది.
+            </div>
+
+            <div class="submission-signatures">
+                <div data-key="sec_asst">సెక్షన్ అసిస్టెంట్</div>
+                <div data-key="deputy_tahsildar">ఉప తహశీల్దార్</div>
+                <div data-key="tahsildar">తహశీల్దార్</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            te: {
+                fee: "వెల: ₹1/-",
+                meeseva: "మీ సేవ",
+                tagline: "సులభంగా, వేగంగా",
+                form_title: "నివాస ధృవపత్రము కొరకు దరఖాస్తు",
+                mr_mrs: "శ్రీ / శ్రీమతి",
+                applicant_p1: "అనునేను",
+                applicant_p2: "అను వారికి తండ్రి / తల్లి / సంరక్షకుడును అయి ఉన్నాను. నేను",
+                applicant_p3: "మండలంలోని",
+                applicant_p4: "గ్రామములో",
+                applicant_p5: "ఇంటి నెంబరులో",
+                applicant_p6: "సంవత్సరములుగా నివసించుచున్న ఆర్జిదారునైయున్నాను. పై ధృవపత్రము నాకు",
+                applicant_p7: "నిమిత్తం కావలసియున్నది. కావున ఇప్పించకోరుచున్నాను.",
+                applicant_name: "అభ్యర్థి పేరు",
+                mobile: "మొబైల్ ఫోన్ నెం.",
+                ration_aadhaar: "రేషన్ కార్డు / ఆధార్ నెం.",
+                applicant_sig: "అభ్యర్థి సంతకం",
+                guardian_sig: "అభ్యర్థి తల్లి / తండ్రి / సంరక్షకుని సంతకము<br>(అభ్యర్థి మైనర్ అయినచో)",
+                enclosure_title: "దరఖాస్తుతో జత పరచవలసినవి :",
+                enc1: "అప్లికేషన్ ఫారమ్ *",
+                enc2: "రేషన్ కార్డు / ఆధార్ నెం / ఓటరు గుర్తింపు కార్డు #",
+                enc3: "ఇంటిపన్ను రశీదు / కరెంటు బిల్లు / టెలిఫోను బిల్లు నకలు #",
+                enc_note: "(* - ఖచ్చితముగా జతపరచవలెను, # - ఏదో ఒకటి ఖచ్చితముగా జత చేయవలెను)",
+                vro_title: "గ్రామ రెవెన్యూ అధికారి నివేదిక",
+                salutation: "శ్రీ / శ్రీమతి / కుమారి / కుమారుడు",
+                father_husband: "తండ్రి / భర్త",
+                vro_p1: "గారు రేషన్ కార్డు / ఆధార్ కార్డు / ఓటరు కార్డు / అఫిడవిట్ ప్రకారం",
+                vro_p2: "గ్రామములో నివసిస్తున్నారు. వీరి దరఖాస్తు పై గ్రామములో విచారణ చేయగా ధృవ పత్రము పొందే వ్యక్తి గత",
+                vro_p3: "సంవత్సరముల నుంచి అనగా",
+                vro_p4: "సం నుంచి నేటి వరకు",
+                vro_p5: "గ్రామములో నివసిస్తున్నారు అని ధృవీకరించనైనది.",
+                village: "గ్రామము",
+                vro_sig: "గ్రామ రెవెన్యూ అధికారి",
+                mri_title: "మండల రెవెన్యూ ఇన్స్పెక్టర్ నివేదిక",
+                mri_p1: "గ్రామములో విచారణ మరియు దరఖాస్తుదారుడు సమర్పించిన ధృవపత్రముల ఆధారంగా దరఖాస్తుదారుడు గత",
+                mri_p2: "సంవత్సరముల నుంచి అనగా",
+                mri_p3: "సంవత్సరము నుంచి నేటి వరకు",
+                mri_p4: "గ్రామములో నివసిస్తున్నారు అని ధృవీకరించనైనది.",
+                mri_sig: "మండల రెవెన్యూ ఇన్స్పెక్టర్",
+                sub_title: "సమర్పణ:",
+                sub_p1: "గ్రామ రెవెన్యూ అధికారి మరియు మండల రెవెన్యూ ఇన్స్పెక్టర్ గార్ల విచారణ నివేదిక మరియు దరఖాస్తుదారు సమర్పించిన ధృవ పత్రములు పరిశీలించగా సర్టిఫికేట్ పొందే వ్యక్తి గత",
+                sub_p2: "సంవత్సరముల నుంచి అనగా",
+                sub_p3: "సం నుంచి నేటి వరకు",
+                sub_p4: "గ్రామములో నివసిస్తున్నారు అని తెలియుచున్నది.",
+                sub_p5: "కావున నివాస ధృవ పత్రము జారీకి తమరి పరిశీలనకు, ఆమోదమునకు మరియు ఇట్టి ఫైలును యల్.డిస్స్ నందు ముగించుటకు తమరి అనుమతికై సమర్పించనైనది.",
+                sec_asst: "సెక్షన్ అసిస్టెంట్",
+                deputy_tahsildar: "ఉప తహశీల్దార్",
+                tahsildar: "తహశీల్దార్"
+            },
+            en: {
+                fee: "Fee: ₹1/-",
+                meeseva: "MeeSeva",
+                tagline: "Easier, Faster",
+                form_title: "Application for Residence Certificate",
+                mr_mrs: "I, Sri / Smt.",
+                applicant_p1: ", am the Father / Mother / Guardian of",
+                applicant_p2: ". I am an applicant residing in",
+                applicant_p3: "Mandal,",
+                applicant_p4: "Village, Door No:",
+                applicant_p5: "for the past",
+                applicant_p6: "years. I require this certificate for the purpose of",
+                applicant_p7: ". Hence, I kindly request you to issue the certificate.",
+                applicant_name: "Applicant Name",
+                mobile: "Mobile Phone No.",
+                ration_aadhaar: "Ration Card / Aadhaar No.",
+                applicant_sig: "Signature of Applicant",
+                guardian_sig: "Signature of Parent / Guardian<br>(If applicant is a minor)",
+                enclosure_title: "Documents to be enclosed :",
+                enc1: "Application Form *",
+                enc2: "Ration Card / Aadhaar No / Voter ID Card #",
+                enc3: "House Tax Receipt / Electricity Bill / Telephone Bill Copy #",
+                enc_note: "(* - Mandatory, # - Any one must be enclosed)",
+                vro_title: "Village Revenue Officer (VRO) Report",
+                salutation: "Sri / Smt / Kum / Master",
+                father_husband: "Father / Husband",
+                vro_p1: "is residing in",
+                vro_p2: "village as per Ration Card / Aadhaar / Voter ID / Affidavit. On inquiry, it is verified that the person has been residing in the village for the past",
+                vro_p3: "years, i.e., from the year",
+                vro_p4: "to till date in",
+                vro_p5: "village.",
+                village: "Village",
+                vro_sig: "Village Revenue Officer",
+                mri_title: "Mandal Revenue Inspector (MRI) Report",
+                mri_p1: "Based on local inquiry and verification of certificates, it is certified that the applicant has been residing in the village for the past",
+                mri_p2: "years, i.e., from the year",
+                mri_p3: "to till date in",
+                mri_p4: "village.",
+                mri_sig: "Mandal Revenue Inspector",
+                sub_title: "Submission:",
+                sub_p1: "Upon examining the inquiry reports of the VRO and MRI along with the documents submitted, it is observed that the applicant has been residing for the past",
+                sub_p2: "years, i.e., from the year",
+                sub_p3: "to till date in",
+                sub_p4: "village.",
+                sub_p5: "Hence, submitted for your examination, approval, and permission to issue the Residence Certificate and dispose of the file under L.Dis.",
+                sec_asst: "Section Assistant",
+                deputy_tahsildar: "Deputy Tahsildar",
+                tahsildar: "Tahsildar"
+            }
+        };
+
+        function setLanguage(lang) {
+            document.getElementById('btn-te').classList.toggle('active', lang === 'te');
+            document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+            
+            document.querySelectorAll('[data-key]').forEach(elem => {
+                const key = elem.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    elem.innerHTML = translations[lang][key];
+                }
+            });
+        }
+    </script>
+</body>
+</html>

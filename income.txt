@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <title>ఆదాయ ధృవీకరణ పత్రము కొరకు దరఖాస్తు</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gidugu&family=Noto+Sans+Telugu:wght@400;700&display=swap');
+
+        @page {
+            size: A4;
+            margin: 10mm 15mm;
+            background-color: #ffffff;
+        }
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Noto Sans Telugu', 'Gidugu', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #000;
+            font-size: 10pt;
+            line-height: 1.5;
+        }
+        .page {
+            page-break-after: always;
+        }
+        .page:last-child {
+            page-break-after: avoid;
+        }
+
+        /* Header Logo Section */
+        .logo-container {
+            text-align: center;
+            margin-bottom: 2px;
+        }
+        .logo-svg {
+            width: 110px;
+            height: auto;
+        }
+
+        /* Form Titles */
+        h1 {
+            text-align: center;
+            font-size: 14pt;
+            font-weight: bold;
+            margin: 4px 0 14px 0;
+        }
+        
+        .right-label {
+            text-align: right;
+            font-weight: bold;
+            font-size: 11pt;
+            margin-bottom: 5px;
+            text-decoration: underline;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 11pt;
+            font-weight: bold;
+            text-decoration: underline;
+            margin: 12px 0 10px 0;
+        }
+
+        .dots-line {
+            border-bottom: 1px dotted #000;
+            display: inline-block;
+        }
+
+        .para-text {
+            text-align: justify;
+            line-height: 2.1;
+            font-size: 10pt;
+            margin-bottom: 10px;
+        }
+
+        /* Data Grid for Applicant Details */
+        table.grid-details {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 8px 0 12px 0;
+        }
+        table.grid-details td {
+            padding: 4px 0;
+            vertical-align: bottom;
+            font-size: 10pt;
+        }
+
+        /* Income Breakdown Table */
+        table.income-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        table.income-table th, table.income-table td {
+            border: 1px solid #000;
+            padding: 5px 8px;
+            font-size: 9.5pt;
+        }
+        table.income-table th {
+            text-align: center;
+            font-weight: bold;
+        }
+        table.income-table td.rupees-col {
+            width: 42%;
+            vertical-align: bottom;
+        }
+
+        /* Declaration Text */
+        .declaration {
+            font-size: 9.5pt;
+            line-height: 1.6;
+            margin: 12px 0 35px 0;
+            text-align: justify;
+        }
+
+        /* Signatures */
+        .signatures-grid {
+            width: 100%;
+            margin-top: 25px;
+            margin-bottom: 20px;
+        }
+        .signatures-grid td {
+            font-weight: bold;
+            font-size: 10pt;
+            vertical-align: bottom;
+        }
+
+        /* Documents Required List */
+        .doc-section {
+            font-size: 9.5pt;
+            line-height: 1.8;
+            margin-top: 10px;
+        }
+
+        /* Officer Report Paragraphs */
+        .report-para {
+            text-align: justify;
+            line-height: 2.2;
+            font-size: 10pt;
+            margin-bottom: 25px;
+        }
+
+        .report-sign {
+            text-align: right;
+            font-weight: bold;
+            font-size: 10pt;
+            margin-top: 15px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .officer-stamps {
+            width: 100%;
+            margin-top: 50px;
+            text-align: center;
+        }
+        .officer-stamps td {
+            width: 33.33%;
+            font-weight: bold;
+            font-size: 10pt;
+            vertical-align: bottom;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- PAGE 1 -->
+    <div class="page">
+        <div class="logo-container">
+            <svg class="logo-svg" viewBox="0 0 200 70">
+                <ellipse cx="100" cy="35" rx="65" ry="28" fill="none" stroke="#f37021" stroke-width="4"/>
+                <circle cx="100" cy="18" r="8" fill="#f37021"/>
+                <path d="M 88 28 Q 100 38 112 28" fill="none" stroke="#f37021" stroke-width="3" stroke-linecap="round"/>
+                <text x="100" y="52" font-family="'Noto Sans Telugu', sans-serif" font-size="22" font-weight="bold" fill="#008837" text-anchor="middle">మీ సేవ</text>
+                <text x="100" y="62" font-family="'Noto Sans Telugu', sans-serif" font-size="7" fill="#f37021" text-anchor="middle" font-weight="bold">అందిచేను సేవలు</text>
+            </svg>
+        </div>
+
+        <h1>రాబడి ధృవపత్రము కొరకు దరఖాస్తు</h1>
+
+        <div class="para-text">
+            శ్రీ/శ్రీమతి <span class="dots-line" style="width: 38%;"></span> అను నేను <span class="dots-line" style="width: 38%;"></span> అను వారికి తండ్రి/తల్లి అయి ఉన్నాను. నేను <span class="dots-line" style="width: 32%;"></span> మండలములోని <span class="dots-line" style="width: 18%;"></span> వార్డు/గ్రామములో <span class="dots-line" style="width: 36%;"></span> నంబరు గల ఇంటిలో నివసించుచున్నాను. నాకు <span class="dots-line" style="width: 38%;"></span> నంబరు గల గులాబీ/తెలుపు రేషను కార్డు మరియు <span class="dots-line" style="width: 28%;"></span> నంబరు గల ఆధార్ కార్డు కలవు. నా ఆదాయము సంవత్సరమునకు అన్నివిధములా కలిసి రూ. <span class="dots-line" style="width: 22%;"></span> /లు (అక్షరాలా <span class="dots-line" style="width: 42%;"></span> ) రూపాయిలనియూ, నాకు పై ధృవపత్రము <span class="dots-line" style="width: 38%;"></span> నిమిత్తము కావలయును. కావున, ఇప్పించగోరుతున్నాను.
+        </div>
+
+        <div style="font-weight: bold; margin-top: 10px; font-size: 10.5pt;">దరఖాస్తుదారుని వివరములు :</div>
+
+        <table class="grid-details">
+            <tr>
+                <td style="width: 30%;"><strong>లింగము :</strong></td>
+                <td style="width: 35%;"><strong>పుట్టినతేది :</strong></td>
+                <td style="width: 35%;"><strong>లొకాలిటి / ల్యాండ్ మార్క్:</strong></td>
+            </tr>
+            <tr>
+                <td><strong>జిల్లా :</strong></td>
+                <td><strong>పిన్ కోడ్ :</strong></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <table class="income-table">
+            <thead>
+                <tr>
+                    <th>ఆదాయము వచ్చు విధానము ( వృత్తి లేదా వ్యాపారము స్పష్టముగా వ్రాయవలెను)</th>
+                    <th style="width: 25%;">రూ.</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1. భూముల నుండి మరియు భవనముల నుండి</td>
+                    <td class="rupees-col">రూ.</td>
+                </tr>
+                <tr>
+                    <td>2. <span class="dots-line" style="width: 60%;"></span> వ్యాపారము రీత్యా</td>
+                    <td class="rupees-col">రూ.</td>
+                </tr>
+                <tr>
+                    <td>3. భార్యాభర్తలకు కలిపి జీతము రీత్యా</td>
+                    <td class="rupees-col">రూ.</td>
+                </tr>
+                <tr>
+                    <td>4. <span class="dots-line" style="width: 60%;"></span> రోజు కూలీ రీత్యా</td>
+                    <td class="rupees-col">రూ.</td>
+                </tr>
+                <tr>
+                    <td>5. మరియు ఇతర మార్గముల ద్వారా<br>&nbsp;&nbsp;&nbsp;(ఆయా మార్గముల వివరములు తెలియపర్చుము)</td>
+                    <td class="rupees-col">రూ.</td>
+                </tr>
+                <tr>
+                    <td style="text-align: right; font-weight: bold;">మొత్తము :</td>
+                    <td class="rupees-col">రూ.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="declaration">
+            పై విషయములు యదార్థములు అని తెలియపర్చుకొనుచున్నాను. ఈ విషయములు యదార్థములు కానిచో ప్రభుత్వము వారు ఇండియన్ పీనల్ కోడ్ క్రింద గైకొను చర్యలకు బాధ్యుడను.
+        </div>
+
+        <table class="signatures-grid">
+            <tr>
+                <td style="width: 50%; text-align: left;">అభ్యర్థి సంతకము</td>
+                <td style="width: 50%; text-align: right;">తండ్రి / తల్లి / సంరక్షకుని సంతకము</td>
+            </tr>
+        </table>
+
+        <div class="doc-section">
+            <div style="font-weight: bold;">జతపరచవలసినవి:</div>
+            <div style="margin-left: 5px;"><strong>1. అప్లికేషన్ ఫారమ్*</strong></div>
+            
+            <table style="width: 100%; border-collapse: collapse; margin-top: 3px;">
+                <tr>
+                    <td style="width: 55%; vertical-align: top;">
+                        <strong>2. రేషన్‌కార్డు/ఆధార్ కార్డు/ఓటరు గుర్తింపుకార్డు నకలు#</strong><br>
+                        <strong>3. ఆదాయపు పన్ను రిటర్న్స్ నకలు/ జీతపు బిల్లు నకలు / ఇతర దస్తావేజులు#</strong><br>
+                        <span style="font-size: 8.5pt;">(*ఖచ్చితంగా జతపరచవలెను, #-ఏదో ఒకటి జతపరచవలెను)</span>
+                    </td>
+                    <td style="width: 45%; vertical-align: top;">
+                        1. ల్యాండ్ నెం <span class="dots-line" style="width: 65%;"></span><br>
+                        2. మొబైల్ నెం. <span class="dots-line" style="width: 63%;"></span><br>
+                        3. ఈ మెయిల్ ఐ.డి <span class="dots-line" style="width: 60%;"></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page">
+        <div class="right-label">Income</div>
+
+        <div class="section-title">గ్రామ రెవెన్యూ అధికారి నివేదిక</div>
+
+        <div class="report-para">
+            శ్రీ/శ్రీమతి <span class="dots-line" style="width: 42%;"></span> కుమారుడు/కుమార్తె/తండ్రి/భర్త <span class="dots-line" style="width: 32%;"></span> గారు రేషన్ కార్డ్/ఆధార్ కార్డ్/ఓటరు కార్డ్ ప్రకారం <span class="dots-line" style="width: 35%;"></span> గ్రామములో నివసిస్తున్నారు. వీరి దరఖాస్తు పై గ్రామములో విచారణ చేయగా దరఖాస్తుదారుని కుటుంబం <span class="dots-line" style="width: 35%;"></span> ద్వారా సంవత్సరమునకు రూ. <span class="dots-line" style="width: 30%;"></span> ఆదాయం పొందుచున్నారని ధృవీకరించనైనది.
+        </div>
+
+        <div class="report-sign">
+            గ్రామ రెవెన్యూ అధికారి<br>
+            గ్రామము <span class="dots-line" style="width: 140px;"></span>
+        </div>
+
+        <div class="section-title" style="margin-top: 35px;">మండల రెవెన్యూ ఇన్స్పెక్టర్ నివేదిక</div>
+
+        <div class="report-para">
+            గ్రామములో విచారణ మరియు దరఖాస్తుదారుడు సమర్పించిన ధృవపత్రముల ఆధారంగా దరఖాస్తుదారుని కుటుంబం <span class="dots-line" style="width: 35%;"></span> ద్వారా సంవత్సరమునకు రూ. <span class="dots-line" style="width: 30%;"></span> ఆదాయం పొందుచున్నారని ధృవీకరించనైనది.
+        </div>
+
+        <div class="report-sign">
+            మండల రెవెన్యూ ఇన్స్పెక్టర్<br>
+            సూర్యాపేట మండలం
+        </div>
+
+        <div style="font-weight: bold; text-decoration: underline; font-size: 11pt; margin-top: 30px; margin-bottom: 8px;">సమర్పణ:</div>
+
+        <div class="report-para">
+            గ్రామ రెవెన్యూ అధికారి మరియు మండల రెవెన్యూ ఇన్స్పెక్టర్ గార్ల విచారణ నివేదిక మరియు దరఖాస్తుదారు సమర్పించిన ధృవ పత్రములు పరిశీలించగా సర్టిఫికేట్ పొందే వ్యక్తి కుటుంబం <span class="dots-line" style="width: 35%;"></span> ద్వారా రూ. <span class="dots-line" style="width: 30%;"></span> ఆదాయం పొందుతున్నారని తెలియచున్నది.
+        </div>
+
+        <div class="report-para">
+            కావున ఆదాయం ధృవ పత్రము జారీకి తమరి పరిశీలనకు, ఆమోదమునకు మరియు ఇట్టి ఫైలును యల్.డిస్ నందు ముగించుటకు తమరీ అనుమతికై సమర్పించనైనది.
+        </div>
+
+        <table class="officer-stamps">
+            <tr>
+                <td>సెక్షన్ అసిస్టెంట్</td>
+                <td>ఉప తహశీల్దార్</td>
+                <td>తహశీల్దార్</td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

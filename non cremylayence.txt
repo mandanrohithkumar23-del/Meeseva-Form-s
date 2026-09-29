@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Creamy Layer / Non-Creamy Layer Application Form</title>
+  <style>
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+      }
+      .container {
+        box-shadow: none;
+        border: none;
+        padding: 0;
+        max-width: 100%;
+      }
+      .no-print {
+        display: none;
+      }
+    }
+
+    body {
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      background-color: #f5f5f5;
+      margin: 0;
+      padding: 20px;
+      color: #000;
+      font-size: 13px;
+      line-height: 1.4;
+    }
+
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px 40px;
+      border: 1px solid #bbb;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .meeseva-header {
+      text-align: right;
+      font-weight: bold;
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    .form-title-block {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-title-block h3, 
+    .form-title-block h4, 
+    .form-title-block p {
+      margin: 2px 0;
+      font-weight: bold;
+    }
+
+    .form-title-block .subtext {
+      font-weight: normal;
+      font-size: 12px;
+    }
+
+    .to-section {
+      margin-bottom: 15px;
+    }
+
+    .to-section .line-input {
+      border: none;
+      border-bottom: 1px dotted #000;
+      outline: none;
+      font-size: 13px;
+    }
+
+    .field-row {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+
+    .field-label {
+      flex: 0 0 55%;
+      padding-right: 10px;
+    }
+
+    .field-input {
+      flex: 1;
+    }
+
+    .field-input input[type="text"] {
+      width: 100%;
+      border: none;
+      border-bottom: 1px dotted #000;
+      outline: none;
+      font-size: 13px;
+      padding: 2px 0;
+    }
+
+    table.form-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 10px 0;
+    }
+
+    table.form-table, 
+    table.form-table th, 
+    table.form-table td {
+      border: 1px solid #000;
+    }
+
+    table.form-table th {
+      text-align: center;
+      padding: 5px;
+      font-size: 12px;
+    }
+
+    table.form-table td {
+      padding: 4px 6px;
+      vertical-align: top;
+      font-size: 12px;
+    }
+
+    table.form-table input[type="text"] {
+      width: 96%;
+      border: none;
+      outline: none;
+      font-size: 12px;
+      padding: 2px;
+      background: transparent;
+    }
+
+    .declaration-text {
+      text-align: justify;
+      margin: 15px 0;
+      font-size: 12.5px;
+      line-height: 1.5;
+    }
+
+    .signatures {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 50px;
+      padding: 0 20px;
+    }
+
+    .btn-container {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    .btn {
+      background-color: #0056b3;
+      color: #fff;
+      padding: 8px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .btn:hover {
+      background-color: #004085;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="meeseva-header">మీ సేవ</div>
+
+  <div class="form-title-block">
+    <h4>ANNEXURE-I</h4>
+    <h4>Form-VII A</h4>
+    <h3>FORM OF APPLICATION FOR ISSUE OF CREAMY LAYER/NON-CREAMY LAYER STATUS CERTIFICATE</h3>
+    <h4>RELATING TO BACKWARD CLASSES GROUP-A, B, C, D &amp; E IN RESPECT OF CIVIL POSTS AND SERVICES WITHIN THE STATE OF TELANGANA UNDER SECTION 3(1) OF ACT 16 OF 1993</h4>
+    <p class="subtext">(Information to be furnished by the applicant himself/her self supported by the documentary evidence)</p>
+  </div>
+
+  <div class="to-section">
+    <div>To</div>
+    <div>The Tahsildar,</div>
+    <div>Mandal/Division: <input type="text" class="line-input" style="width: 250px;"></div>
+    <div>District: <input type="text" class="line-input" style="width: 250px;"></div>
+    <br>
+    <div>Sir,</div>
+    <div style="margin-top: 5px; text-indent: 30px;">
+      I am in need of a Creamy Layer/Non-Creamy Layer Certificate for me/ my son/ my daughter for applying in the civil posts and services within the State of Telangana for which the relevant detail are given below:
+    </div>
+  </div>
+
+  <form id="applicationForm">
+    <div class="field-row">
+      <div class="field-label">1. Full Name of the applicant including surname:<br><small>(In Block letters)</small></div>
+      <div class="field-input"><input type="text"></div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-label">2. Gender of the Applicant (Male/Female):</div>
+      <div class="field-input"><input type="text"></div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-label">3. Date of birth and Age:</div>
+      <div class="field-input"><input type="text"></div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-label">4. Complete Residential Address:</div>
+      <div class="field-input"></div>
+    </div>
+    <div class="field-row" style="padding-left: 20px;">
+      <div class="field-label">(a) Present:</div>
+      <div class="field-input"><input type="text"></div>
+    </div>
+    <div class="field-row" style="padding-left: 20px;">
+      <div class="field-label">(b) Permanent:</div>
+      <div class="field-input"><input type="text"></div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-label">5. Religion:</div>
+      <div class="field-input"><input type="text"></div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-label">6. Caste:</div>
+      <div class="field-input"><input type="text"></div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-label">7. Sub-Caste:</div>
+      <div class="field-input"><input type="text"></div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-label">8. Name of Father/Husband including surnames:</div>
+      <div class="field-input"><input type="text"></div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-label">9. Name of Mother including surname:</div>
+      <div class="field-input"><input type="text"></div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-label">10. Occupation of Father /Husband:</div>
+      <div class="field-input"><input type="text"></div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-label">11. Occupation of Mother:</div>
+      <div class="field-input"><input type="text"></div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-label">12. Serial Number of the Caste in the list of Socially and Educationally Backward Classes in Group-A, B, C, D &amp; E in the State of Telangana:</div>
+      <div class="field-input"><input type="text"></div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-label">13. Aadhar Card No. (Optional):</div>
+      <div class="field-input"><input type="text" placeholder="[Redacted]"></div>
+    </div>
+
+    <div class="field-row">
+      <div class="field-label">14. Household Survey No.:</div>
+      <div class="field-input"><input type="text"></div>
+    </div>
+
+    <div style="margin-top: 15px; font-weight: bold;">15. Status of Parent (s)/Husband</div>
+
+    <!-- Table A & B.I -->
+    <table class="form-table">
+      <thead>
+        <tr>
+          <th style="width: 50%;">Category</th>
+          <th style="width: 25%;">Father / Husband</th>
+          <th style="width: 25%;">Mother</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="3"><strong>(A) Constitutional Posts</strong></td>
+        </tr>
+        <tr>
+          <td>(i) Designations</td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td colspan="3"><strong>(B) I. Government Services</strong></td>
+        </tr>
+        <tr>
+          <td>i. Service (Central/State)</td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>ii. Designation</td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>iii. Scale of Pay, including classification, if any,</td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>iv. Date of appointment to the post</td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>v. Age at the time of promotion to Class-I Post in the Government of India/Central Public Sector Undertakings (if applicable)</td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Section B.II -->
+    <div style="font-weight: bold; margin-top: 10px;">II. Employment in International Organisation:</div>
+    <div style="font-size: 11px; margin-bottom: 5px;">
+      e.g. United Nation Organisation (UN), UNICEF, WHO, FAO, IAEA, ICAO, IFAD, ILO, IMO, IMF, ITU, UPU, WBG, WIPO, WMO, UNWTO, UNODC
+    </div>
+    <table class="form-table">
+      <tbody>
+        <tr>
+          <td style="width: 50%;">(i) Name of Organisation</td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>(ii) Designation</td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>(iii) Period of service (Indicate date from to............)</td>
+          <td><input type="text"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Section B.III -->
+    <div style="font-weight: bold; margin-top: 10px;">III. Death/Permanent Incapacitation in the Services of Government of India and Central Public Sector Undertakings (Omit if not applicable)</div>
+    <table class="form-table">
+      <tbody>
+        <tr>
+          <td style="width: 50%;">(i) Date of death/Permanent Incapacitation putting an officer out of service</td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>(ii) Details of Permanent Incapacitation</td>
+          <td><input type="text"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Section C, D, E -->
+    <div style="font-weight: bold; margin-top: 10px;">(C) Employment to State (Government of India and Central Public Sector Undertakings etc.,)</div>
+    <table class="form-table">
+      <tbody>
+        <tr>
+          <td style="width: 50%;">(i) Name of Organisation</td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>(ii) Designation</td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>(iii) Date of appointment to the Post.</td>
+          <td><input type="text"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="font-weight: bold; margin-top: 10px;">(D) Armed Forces (Army, Navy and Air-force) Including Para-military Forces</div>
+    <div style="font-size: 11px; margin-bottom: 5px;">(e.g. CRPF, BSF, ITBP, CISF, Sahara Seema Bal and Assam Rifles - This will not include persons holding civil posts.)</div>
+    <table class="form-table">
+      <tbody>
+        <tr>
+          <td style="width: 50%;">(i) Designation</td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>(ii) Scale of Pay</td>
+          <td><input type="text"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="font-weight: bold; margin-top: 10px;">(E) Professional Class (other than those covered to item Nos. B &amp; C) and those engaged in trade, Business and Industry</div>
+    <div style="font-size: 11px; margin-bottom: 5px;">(eg., doctor, lawyer, chartered accountant, Income-Tax consultant, financial or management consultant, dental surgeon, engineer, architect, computer specialist, film artists, author, sports person, media professional, etc.)</div>
+    <table class="form-table">
+      <tbody>
+        <tr>
+          <td style="width: 50%;">(i) Occupation/Profession</td>
+          <td><input type="text"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Section F: Property Owners -->
+    <div style="font-weight: bold; margin-top: 10px;">(F) Property-Owners</div>
+    <div style="font-weight: bold; margin-top: 5px;">I. Agricultural Land Holding: owned by mother, Father &amp; minor children</div>
+    <table class="form-table">
+      <tbody>
+        <tr>
+          <td style="width: 50%;">(i) Location</td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>(ii) Size of holding: (a) Irrigated (type of irrigated land) / (b) Un-irrigated</td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>(iv) Percentage of irrigated land holding up to Statutory ceiling limit under State land Ceiling laws.</td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>(v) If land holding is both irrigated/un-irrigated total irrigated Land holdings on the basis of conversion formula in State land Ceiling laws.</td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>(vi) Percentage of Total irrigated land holding upto statutory ceiling limit as per, (iv)</td>
+          <td><input type="text"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="font-weight: bold; margin-top: 10px;">II. Plantation:</div>
+    <table class="form-table">
+      <thead>
+        <tr>
+          <th>(i) Crops/Fruit</th>
+          <th>(ii) Location</th>
+          <th>(iii) Area of Plantation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="font-weight: bold; margin-top: 10px;">III. Vacant land and/or building in urban areas or urban agglomeration</div>
+    <table class="form-table">
+      <thead>
+        <tr>
+          <th>(i) Location of Property</th>
+          <th>(ii) Details of Property</th>
+          <th>(iii) Use to which it is put</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+          <td><input type="text"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Section G: Income / Wealth -->
+    <div style="font-weight: bold; margin-top: 10px;">(G) Income/Wealth</div>
+    <table class="form-table">
+      <tbody>
+        <tr>
+          <td style="width: 60%;">(i) Annual family income from all sources: (excluding salaries &amp; Income from agricultural land)</td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>(ii) Whether Tax Payer (Yes/No): (if yes, a copy of the last three years return be furnished)</td>
+          <td><input type="text"></td>
+        </tr>
+        <tr>
+          <td>(iii) Whether covered in Wealth Tax Act (Yes/No): (if so furnish details)</td>
+          <td><input type="text"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="field-row" style="margin-top: 10px;">
+      <div class="field-label" style="font-weight: bold;">16. Any remarks:</div>
+      <div class="field-input"><input type="text"></div>
+    </div>
+
+    <div class="declaration-text">
+      <strong>17.</strong> I certify that above said particulars are true to the best of my knowledge and belief and that I do not belong to the Creamy Layer of BCs Group-A/B/C/D/E and eligible to be considered for Civil posts and services reserved for BC's Group-A/B/C/D/E. In the event of any information being found false or incorrect, or ineligibility being detected before or after the selection, I understand that my candidature/appointment is liable to be cancelled and I shall be liable to such further action as may be provided under Section 10 of the Act No.16 of 1993.
+    </div>
+
+    <div style="margin-top: 15px;">
+      <strong>Documents Required:</strong>
+      <ol style="margin: 5px 0 0 20px; padding: 0;">
+        <li>Application Form *</li>
+        <li>Copy of last three years return in the Documents list (Father/Husband Whether Tax Payer) *</li>
+        <li>Copy of last three years return in the Documents list (Mother Whether Tax Payer) *</li>
+      </ol>
+    </div>
+
+    <div class="signatures">
+      <div>
+        <br><br>
+        <strong>Signature of the Parent/Guardian</strong>
+      </div>
+      <div style="text-align: right;">
+        <br><br>
+        <strong>Signature of the applicant</strong>
+      </div>
+    </div>
+
+    <div class="btn-container no-print">
+      <button type="button" class="btn" onclick="window.print()">Print / Save as PDF</button>
+    </div>
+  </form>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("applicationForm");
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+    });
+  });
+</script>
+
+</body>
+</html>

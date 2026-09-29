@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MeeSeva New Ration Card Application Form</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+      color: #000;
+    }
+
+    body {
+      background-color: #555;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      background: #fff;
+      padding: 12mm 15mm;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      position: relative;
+    }
+
+    /* Header */
+    .header {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .header-logo-text {
+      font-size: 20px;
+      font-weight: bold;
+      color: #000;
+      line-height: 1.2;
+    }
+
+    .header-title {
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 2px;
+      text-decoration: none;
+    }
+
+    /* Section Banner */
+    .section-header {
+      background-color: #2f5597;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 3px 6px;
+      margin-top: 6px;
+      margin-bottom: 6px;
+      letter-spacing: 0.3px;
+    }
+
+    /* Grid Layouts */
+    .row {
+      display: flex;
+      width: 100%;
+      margin-bottom: 4px;
+      align-items: center;
+    }
+
+    .col-2 {
+      display: flex;
+      width: 50%;
+      align-items: center;
+      padding-right: 8px;
+    }
+
+    .col-3 {
+      display: flex;
+      width: 33.33%;
+      align-items: center;
+      padding-right: 6px;
+    }
+
+    label {
+      font-size: 10.5px;
+      white-space: nowrap;
+      margin-right: 4px;
+    }
+
+    .req {
+      color: #000;
+    }
+
+    /* Printable-style Inputs */
+    .input-line {
+      flex: 1;
+      border: none;
+      border-bottom: 1px dotted #555;
+      background: transparent;
+      outline: none;
+      font-size: 10.5px;
+      padding: 1px 3px;
+      height: 18px;
+    }
+
+    .checkbox-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 10.5px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .checkbox-box {
+      width: 11px;
+      height: 11px;
+      border: 1px solid #000;
+      display: inline-block;
+      vertical-align: middle;
+      background: #fff;
+    }
+
+    /* Two column section layout for Residence & Permanent */
+    .columns-container {
+      display: flex;
+      gap: 15px;
+    }
+
+    .column-half {
+      flex: 1;
+    }
+
+    /* Member Details Table */
+    .member-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 4px;
+      table-layout: fixed;
+    }
+
+    .member-table th, 
+    .member-table td {
+      border: 1px solid #444;
+      font-size: 8px;
+      padding: 2px 1px;
+      text-align: center;
+      vertical-align: middle;
+      word-wrap: break-word;
+    }
+
+    .member-table th {
+      font-weight: bold;
+      background-color: #fff;
+      line-height: 1.1;
+      height: 38px;
+    }
+
+    .member-table td input {
+      width: 100%;
+      border: none;
+      font-size: 8px;
+      text-align: center;
+      background: transparent;
+      outline: none;
+    }
+
+    /* Note Box */
+    .note-text {
+      font-size: 9.5px;
+      line-height: 1.35;
+      margin-top: 4px;
+      margin-bottom: 6px;
+    }
+
+    /* Checklist */
+    .docs-list {
+      margin-top: 4px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    /* Signature Area */
+    .signature-container {
+      margin-top: 45px;
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .signature-wrap {
+      text-align: center;
+      width: 180px;
+      font-size: 11px;
+      font-weight: bold;
+    }
+
+    /* Print Setup */
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+        gap: 0;
+      }
+      .page {
+        box-shadow: none;
+        margin: 0;
+        width: 100%;
+        min-height: auto;
+        page-break-after: always;
+      }
+      .page:last-child {
+        page-break-after: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==================== PAGE 1 ==================== -->
+  <div class="page">
+    <div class="header">
+      <div class="header-logo-text">మీ సేవ</div>
+      <div class="header-title">New Ration Card Application Form</div>
+    </div>
+
+    <!-- Head of the Household Details -->
+    <div class="section-header">Head of the Household Details</div>
+
+    <div class="row" style="margin-bottom: 6px;">
+      <div style="display: flex; align-items: center; width: 100%;">
+        <label>Card Type*:</label>
+        <span class="checkbox-item"><span class="checkbox-box"></span> APL</span>
+        <span class="checkbox-item"><span class="checkbox-box"></span> BPL</span>
+        <span class="checkbox-item"><span class="checkbox-box"></span> AAY</span>
+        <span class="checkbox-item"><span class="checkbox-box"></span> AAP</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <label>EID*:</label>
+        <input type="text" class="input-line">
+      </div>
+      <div class="col-2">
+        <label>UID:</label>
+        <input type="text" class="input-line">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <label>Name of Head of the Family*:</label>
+        <input type="text" class="input-line">
+      </div>
+      <div class="col-2">
+        <label>Name of Head of the Family (In local language)*:</label>
+        <input type="text" class="input-line">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <label>Mother's Name*:</label>
+        <input type="text" class="input-line">
+      </div>
+      <div class="col-2">
+        <label>Mother's Name (In local language)*:</label>
+        <input type="text" class="input-line">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <label>Father's Name*:</label>
+        <input type="text" class="input-line">
+      </div>
+      <div class="col-2">
+        <label>Father's Name (In local language)*:</label>
+        <input type="text" class="input-line">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <label>Gender*:</label>
+        <span class="checkbox-item"><span class="checkbox-box"></span> Male</span>
+        <span class="checkbox-item"><span class="checkbox-box"></span> Female</span>
+      </div>
+      <div class="col-2">
+        <label>DOB*:</label>
+        <input type="text" class="input-line" placeholder="DD/MM/YYYY">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <label>Spouse's Name*:</label>
+        <input type="text" class="input-line">
+      </div>
+      <div class="col-2">
+        <label>Age*:</label>
+        <input type="text" class="input-line">
+      </div>
+    </div>
+
+    <!-- Professional Details -->
+    <div class="section-header">Professional Details</div>
+
+    <div class="row">
+      <div class="col-2">
+        <label>Occupation*:</label>
+        <input type="text" class="input-line">
+      </div>
+      <div class="col-2">
+        <label>Annual Income*:</label>
+        <input type="text" class="input-line">
+      </div>
+    </div>
+
+    <!-- Gas Connection Details -->
+    <div class="section-header">Gas Connection Details</div>
+
+    <div class="row" style="margin-bottom: 6px;">
+      <div style="display: flex; align-items: center; width: 100%;">
+        <label>Gas Connection Status*:</label>
+        <span class="checkbox-item"><span class="checkbox-box"></span> Deepam</span>
+        <span class="checkbox-item"><span class="checkbox-box"></span> Double</span>
+        <span class="checkbox-item"><span class="checkbox-box"></span> Single</span>
+        <span class="checkbox-item"><span class="checkbox-box"></span> No Cylinder</span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-3">
+        <label>Gas Company Name*:</label>
+        <input type="text" class="input-line">
+      </div>
+      <div class="col-3">
+        <label>Gas Agency Name*:</label>
+        <input type="text" class="input-line">
+      </div>
+      <div class="col-3">
+        <label>Consumer No*:</label>
+        <input type="text" class="input-line">
+      </div>
+    </div>
+
+    <!-- Two-column Addresses -->
+    <div class="columns-container">
+      <!-- Residence Address -->
+      <div class="column-half">
+        <div class="section-header">Residence Address</div>
+        <div class="row">
+          <label>Door No *:</label>
+          <input type="text" class="input-line">
+        </div>
+        <div class="row">
+          <label>Locality / Land Mark*:</label>
+          <input type="text" class="input-line">
+        </div>
+        <div class="row">
+          <label>District*:</label>
+          <input type="text" class="input-line">
+        </div>
+        <div class="row">
+          <label>Mandal*:</label>
+          <input type="text" class="input-line">
+        </div>
+        <div class="row">
+          <label>Village / Ward *:</label>
+          <input type="text" class="input-line">
+        </div>
+        <div class="row">
+          <label>Pin Code:</label>
+          <input type="text" class="input-line">
+        </div>
+        <div class="row">
+          <label>FP Shop No*:</label>
+          <input type="text" class="input-line">
+        </div>
+      </div>
+
+      <!-- Permanent Address -->
+      <div class="column-half">
+        <div class="section-header">Permanent Address</div>
+        <div class="row">
+          <label>Door No *:</label>
+          <input type="text" class="input-line">
+        </div>
+        <div class="row">
+          <label>Locality / Land Mark*:</label>
+          <input type="text" class="input-line">
+        </div>
+        <div class="row">
+          <label>District*:</label>
+          <input type="text" class="input-line">
+        </div>
+        <div class="row">
+          <label>Mandal*:</label>
+          <input type="text" class="input-line">
+        </div>
+        <div class="row">
+          <label>Village / Ward *:</label>
+          <input type="text" class="input-line">
+        </div>
+        <div class="row">
+          <label>Pin Code:</label>
+          <input type="text" class="input-line">
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Member Question -->
+    <div class="row" style="margin-top: 10px;">
+      <label style="font-weight: bold;">Add Member Details:</label>
+      <span class="checkbox-item"><span class="checkbox-box"></span> YES</span>
+      <span class="checkbox-item"><span class="checkbox-box"></span> NO</span>
+    </div>
+  </div>
+
+  <!-- ==================== PAGE 2 ==================== -->
+  <div class="page">
+    <div class="header">
+      <div class="header-logo-text">మీ సేవ</div>
+    </div>
+
+    <!-- Member Details Grid -->
+    <div style="font-size: 11px; font-weight: bold; margin-bottom: 2px;">
+      If Yes, Please Enter Member Details
+    </div>
+
+    <table class="member-table">
+      <thead>
+        <tr>
+          <th style="width: 11%;">Member<br>Name</th>
+          <th style="width: 7%;">Gender</th>
+          <th style="width: 10%;">DOB<br>(DD/MM<br>/YYYY)</th>
+          <th style="width: 9%;">Mother<br>Name</th>
+          <th style="width: 9%;">Father<br>Name</th>
+          <th style="width: 9%;">Spouse<br>Name</th>
+          <th style="width: 14%;">Opting to Lift<br>Commodity<br>(True/False)</th>
+          <th style="width: 5%;">Age</th>
+          <th style="width: 8%;">EID</th>
+          <th style="width: 8%;">UID</th>
+          <th style="width: 10%;">Relationship<br>with Head<br>of the Family</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 6 Blank Data Rows as per standard template layout -->
+        <tr>
+          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+        </tr>
+        <tr>
+          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+        </tr>
+        <tr>
+          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+        </tr>
+        <tr>
+          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+        </tr>
+        <tr>
+          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+        </tr>
+        <tr>
+          <td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td><td><input type="text"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Other Details -->
+    <div class="section-header" style="margin-top: 10px;">Other Details</div>
+    <div class="row">
+      <div style="display: flex; width: 100%; align-items: center;">
+        <label>Old Ration Card No. (If any):</label>
+        <input type="text" class="input-line">
+      </div>
+    </div>
+
+    <!-- Informant Details -->
+    <div class="section-header">Informant Details</div>
+    <div class="row">
+      <div class="col-2">
+        <label>Informant Name*:</label>
+        <input type="text" class="input-line">
+      </div>
+      <div class="col-2">
+        <label>Informant Relation*:</label>
+        <input type="text" class="input-line">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <label>Delivery Type*:</label>
+        <input type="text" class="input-line">
+      </div>
+      <div class="col-2">
+        <label>Mobile No*:</label>
+        <input type="text" class="input-line">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">
+        <label>Proof Document*:</label>
+        <input type="text" class="input-line">
+      </div>
+    </div>
+
+    <!-- Documents List -->
+    <div class="section-header">Documents List</div>
+    <div class="note-text">
+      <strong>(NOTE:</strong> 1. Total size of all Upload Documents should not be exceeding up to 50 KB.<br>
+      2. All Upload Documents should be in PDF format only.<strong>)</strong>
+    </div>
+
+    <div class="docs-list">
+      <span class="checkbox-item"><span class="checkbox-box"></span> Meeseva Application Form*</span>
+      <span class="checkbox-item"><span class="checkbox-box"></span> Proof Document*</span>
+      <span class="checkbox-item"><span class="checkbox-box"></span> Photo*</span>
+    </div>
+
+    <!-- Applicant's Signature -->
+    <div class="signature-container">
+      <div class="signature-wrap">
+        Applicant's Signature
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Allows toggling the visual state of the form's printable checkboxes on click
+    document.querySelectorAll('.checkbox-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const box = this.querySelector('.checkbox-box');
+        if (box.textContent === '✔') {
+          box.textContent = '';
+          box.style.textAlign = 'center';
+          box.style.lineHeight = '10px';
+          box.style.fontSize = '9px';
+        } else {
+          box.textContent = '✔';
+          box.style.textAlign = 'center';
+          box.style.lineHeight = '10px';
+          box.style.fontSize = '9px';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
